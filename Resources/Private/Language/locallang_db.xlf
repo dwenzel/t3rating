@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2013-08-29T12:14:03Z" product-name="t3rating">
+		<header/>
+		<body>
+
+			<trans-unit id="tx_t3rating_domain_model_voting">
+				<source>Voting</source>
+			</trans-unit>
+			<trans-unit id="tx_t3rating_domain_model_voting.title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_t3rating_domain_model_voting.description">
+				<source>Description</source>
+			</trans-unit>
+			<trans-unit id="tx_t3rating_domain_model_voting.teaser">
+				<source>Teaser</source>
+			</trans-unit>
+			<trans-unit id="tx_t3rating_domain_model_voting.image">
+				<source>Image</source>
+			</trans-unit>
+			<trans-unit id="tx_t3rating_domain_model_voting.votables">
+				<source>Votables</source>
+			</trans-unit>
+
+			<trans-unit id="tx_t3rating_domain_model_option">
+				<source>Option</source>
+			</trans-unit>
+			<trans-unit id="tx_t3rating_domain_model_option.title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_t3rating_domain_model_option.description">
+				<source>Description</source>
+			</trans-unit>
+			<trans-unit id="tx_t3rating_domain_model_option.hint">
+				<source>Hint</source>
+			</trans-unit>
+			<trans-unit id="tx_t3rating_domain_model_option.content_elements">
+				<source>Content Elements</source>
+			</trans-unit>
+
+			<trans-unit id="tx_t3rating_domain_model_vote">
+				<source>Vote</source>
+			</trans-unit>
+			<trans-unit id="tx_t3rating_domain_model_vote.selection">
+				<source>Selection</source>
+			</trans-unit>
+			<trans-unit id="tx_t3rating_domain_model_vote.user">
+				<source>User</source>
+			</trans-unit>
+			<trans-unit id="tx_t3rating_domain_model_vote.voting">
+				<source>Voting</source>
+			</trans-unit>
+
+			<trans-unit id="tx_t3rating_domain_model_ttcontent">
+				<source>Tt Content</source>
+			</trans-unit>
+			
+			<trans-unit id="tt_content.tx_extbase_type.Tx_T3rating_TtContent">
+				<source>Rating TtContent</source>
+			</trans-unit>
+			
+		</body>
+	</file>
+</xliff>

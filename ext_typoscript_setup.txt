@@ -1,0 +1,14 @@
+config.tx_extbase{
+    persistence{
+        classes{
+
+            webfox\T3rating\Domain\Model\TtContent {
+                mapping {
+                    tableName = tt_content
+                    recordType = Tx_T3rating_TtContent
+                }
+            }
+            
+    	}
+    }
+}

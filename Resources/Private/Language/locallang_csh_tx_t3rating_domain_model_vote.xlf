@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2013-08-29T12:14:03Z" product-name="t3rating">
+		<header/>
+		<body>
+
+			<trans-unit id="selection.description">
+				<source>Selected option</source>
+			</trans-unit>
+			<trans-unit id="user.description">
+				<source>Frontend User</source>
+			</trans-unit>
+			<trans-unit id="voting.description">
+				<source>voting</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

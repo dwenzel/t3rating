@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2013-08-29T12:14:03Z" product-name="t3rating">
+		<header/>
+		<body>
+
+			<trans-unit id="title.description">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="description.description">
+				<source>description</source>
+			</trans-unit>
+			<trans-unit id="hint.description">
+				<source>hint</source>
+			</trans-unit>
+			<trans-unit id="content_elements.description">
+				<source>Content Elements</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
