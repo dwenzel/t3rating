@@ -107,58 +107,17 @@ class OptionTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	/**
 	 * @test
 	 */
-	public function getContentElementsReturnsInitialValueForTtContent() { 
-		$newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\Generic\ObjectStorage();
-		$this->assertEquals(
-			$newObjectStorage,
-			$this->fixture->getContentElements()
-		);
-	}
+	public function getCollectionsReturnsInitialValueForString() { }
 
 	/**
 	 * @test
 	 */
-	public function setContentElementsForObjectStorageContainingTtContentSetsContentElements() { 
-		$contentElement = new \webfox\T3rating\Domain\Model\TtContent();
-		$objectStorageHoldingExactlyOneContentElements = new \TYPO3\CMS\Extbase\Persistence\Generic\ObjectStorage();
-		$objectStorageHoldingExactlyOneContentElements->attach($contentElement);
-		$this->fixture->setContentElements($objectStorageHoldingExactlyOneContentElements);
+	public function setCollectionsForStringSetsCollections() { 
+		$this->fixture->setCollections('Conceived at T3CON10');
 
 		$this->assertSame(
-			$objectStorageHoldingExactlyOneContentElements,
-			$this->fixture->getContentElements()
-		);
-	}
-	
-	/**
-	 * @test
-	 */
-	public function addContentElementToObjectStorageHoldingContentElements() {
-		$contentElement = new \webfox\T3rating\Domain\Model\TtContent();
-		$objectStorageHoldingExactlyOneContentElement = new \TYPO3\CMS\Extbase\Persistence\Generic\ObjectStorage();
-		$objectStorageHoldingExactlyOneContentElement->attach($contentElement);
-		$this->fixture->addContentElement($contentElement);
-
-		$this->assertEquals(
-			$objectStorageHoldingExactlyOneContentElement,
-			$this->fixture->getContentElements()
-		);
-	}
-
-	/**
-	 * @test
-	 */
-	public function removeContentElementFromObjectStorageHoldingContentElements() {
-		$contentElement = new \webfox\T3rating\Domain\Model\TtContent();
-		$localObjectStorage = new \TYPO3\CMS\Extbase\Persistence\Generic\ObjectStorage();
-		$localObjectStorage->attach($contentElement);
-		$localObjectStorage->detach($contentElement);
-		$this->fixture->addContentElement($contentElement);
-		$this->fixture->removeContentElement($contentElement);
-
-		$this->assertEquals(
-			$localObjectStorage,
-			$this->fixture->getContentElements()
+			'Conceived at T3CON10',
+			$this->fixture->getCollections()
 		);
 	}
 	

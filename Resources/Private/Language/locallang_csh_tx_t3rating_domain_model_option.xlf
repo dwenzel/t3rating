@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2013-08-29T12:14:03Z" product-name="t3rating">
+	<file source-language="en" datatype="plaintext" original="messages" date="2013-09-18T16:41:18Z" product-name="t3rating">
 		<header/>
 		<body>
 
@@ -13,8 +13,8 @@
 			<trans-unit id="hint.description">
 				<source>hint</source>
 			</trans-unit>
-			<trans-unit id="content_elements.description">
-				<source>Content Elements</source>
+			<trans-unit id="collections.description">
+				<source>Collections</source>
 			</trans-unit>
 		</body>
 	</file>

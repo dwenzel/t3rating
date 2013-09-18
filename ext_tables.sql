@@ -6,11 +6,12 @@ CREATE TABLE tx_t3rating_domain_model_voting (
 	uid int(11) NOT NULL auto_increment,
 	pid int(11) DEFAULT '0' NOT NULL,
 
+	type int(11) DEFAULT '0' NOT NULL,
 	title varchar(255) DEFAULT '' NOT NULL,
 	description text NOT NULL,
 	teaser text NOT NULL,
 	image text NOT NULL,
-	votables int(11) unsigned DEFAULT '0' NOT NULL,
+	options int(11) unsigned DEFAULT '0' NOT NULL,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,
@@ -53,7 +54,7 @@ CREATE TABLE tx_t3rating_domain_model_option (
 	title varchar(255) DEFAULT '' NOT NULL,
 	description text NOT NULL,
 	hint text NOT NULL,
-	content_elements int(11) unsigned DEFAULT '0' NOT NULL,
+	collections text NOT NULL,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,
@@ -128,29 +129,18 @@ CREATE TABLE tx_t3rating_domain_model_vote (
 );
 
 #
-# Table structure for table 'tt_content'
+# Table structure for table 'fe_users'
 #
-CREATE TABLE tt_content (
+CREATE TABLE fe_users (
+
+	tx_extbase_type varchar(255) DEFAULT '' NOT NULL,
 
 );
 
 #
-# Table structure for table 'tx_t3rating_voting_votable_mm'
+# Table structure for table 'tx_t3rating_voting_option_mm'
 #
-CREATE TABLE tx_t3rating_voting_votable_mm (
-	uid_local int(11) unsigned DEFAULT '0' NOT NULL,
-	uid_foreign int(11) unsigned DEFAULT '0' NOT NULL,
-	sorting int(11) unsigned DEFAULT '0' NOT NULL,
-	sorting_foreign int(11) unsigned DEFAULT '0' NOT NULL,
-
-	KEY uid_local (uid_local),
-	KEY uid_foreign (uid_foreign)
-);
-
-#
-# Table structure for table 'tx_t3rating_option_ttcontent_mm'
-#
-CREATE TABLE tx_t3rating_option_ttcontent_mm (
+CREATE TABLE tx_t3rating_voting_option_mm (
 	uid_local int(11) unsigned DEFAULT '0' NOT NULL,
 	uid_foreign int(11) unsigned DEFAULT '0' NOT NULL,
 	sorting int(11) unsigned DEFAULT '0' NOT NULL,

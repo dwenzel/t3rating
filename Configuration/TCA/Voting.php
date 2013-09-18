@@ -6,10 +6,10 @@ if (!defined ('TYPO3_MODE')) {
 $TCA['tx_t3rating_domain_model_voting'] = array(
 	'ctrl' => $TCA['tx_t3rating_domain_model_voting']['ctrl'],
 	'interface' => array(
-		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, description, teaser, image, votables',
+		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, type, title, description, teaser, image, options',
 	),
 	'types' => array(
-		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, title, description, teaser, image, votables,--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'),
+		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, type, title, description, teaser, image, options,--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'),
 	),
 	'palettes' => array(
 		'1' => array('showitem' => ''),
@@ -93,6 +93,19 @@ $TCA['tx_t3rating_domain_model_voting'] = array(
 				),
 			),
 		),
+		'type' => array(
+			'exclude' => 0,
+			'label' => 'LLL:EXT:t3rating/Resources/Private/Language/locallang_db.xlf:tx_t3rating_domain_model_voting.type',
+			'config' => array(
+				'type' => 'select',
+				'items' => array(
+					array('-- Label --', 0),
+				),
+				'size' => 1,
+				'maxitems' => 1,
+				'eval' => 'required'
+			),
+		),
 		'title' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:t3rating/Resources/Private/Language/locallang_db.xlf:tx_t3rating_domain_model_voting.title',
@@ -157,13 +170,13 @@ $TCA['tx_t3rating_domain_model_voting'] = array(
 				'disallowed' => '',
 			),
 		),
-		'votables' => array(
+		'options' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:t3rating/Resources/Private/Language/locallang_db.xlf:tx_t3rating_domain_model_voting.votables',
+			'label' => 'LLL:EXT:t3rating/Resources/Private/Language/locallang_db.xlf:tx_t3rating_domain_model_voting.options',
 			'config' => array(
 				'type' => 'select',
 				'foreign_table' => 'tx_t3rating_domain_model_option',
-				'MM' => 'tx_t3rating_voting_votable_mm',
+				'MM' => 'tx_t3rating_voting_option_mm',
 				'size' => 10,
 				'autoSizeMax' => 30,
 				'maxitems' => 9999,
@@ -196,4 +209,5 @@ $TCA['tx_t3rating_domain_model_voting'] = array(
 	),
 );
 
+## EXTENSION BUILDER DEFAULTS END TOKEN - Everything BEFORE this line is overwritten with the defaults of the extension builder
 ?>

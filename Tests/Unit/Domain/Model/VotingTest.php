@@ -56,6 +56,28 @@ class VotingTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	/**
 	 * @test
 	 */
+	public function getTypeReturnsInitialValueForInteger() { 
+		$this->assertSame(
+			0,
+			$this->fixture->getType()
+		);
+	}
+
+	/**
+	 * @test
+	 */
+	public function setTypeForIntegerSetsType() { 
+		$this->fixture->setType(12);
+
+		$this->assertSame(
+			12,
+			$this->fixture->getType()
+		);
+	}
+	
+	/**
+	 * @test
+	 */
 	public function getTitleReturnsInitialValueForString() { }
 
 	/**
@@ -124,58 +146,58 @@ class VotingTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	/**
 	 * @test
 	 */
-	public function getVotablesReturnsInitialValueForOption() { 
+	public function getOptionsReturnsInitialValueForOption() { 
 		$newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\Generic\ObjectStorage();
 		$this->assertEquals(
 			$newObjectStorage,
-			$this->fixture->getVotables()
+			$this->fixture->getOptions()
 		);
 	}
 
 	/**
 	 * @test
 	 */
-	public function setVotablesForObjectStorageContainingOptionSetsVotables() { 
-		$votable = new \webfox\T3rating\Domain\Model\Option();
-		$objectStorageHoldingExactlyOneVotables = new \TYPO3\CMS\Extbase\Persistence\Generic\ObjectStorage();
-		$objectStorageHoldingExactlyOneVotables->attach($votable);
-		$this->fixture->setVotables($objectStorageHoldingExactlyOneVotables);
+	public function setOptionsForObjectStorageContainingOptionSetsOptions() { 
+		$option = new \webfox\T3rating\Domain\Model\Option();
+		$objectStorageHoldingExactlyOneOptions = new \TYPO3\CMS\Extbase\Persistence\Generic\ObjectStorage();
+		$objectStorageHoldingExactlyOneOptions->attach($option);
+		$this->fixture->setOptions($objectStorageHoldingExactlyOneOptions);
 
 		$this->assertSame(
-			$objectStorageHoldingExactlyOneVotables,
-			$this->fixture->getVotables()
+			$objectStorageHoldingExactlyOneOptions,
+			$this->fixture->getOptions()
 		);
 	}
 	
 	/**
 	 * @test
 	 */
-	public function addVotableToObjectStorageHoldingVotables() {
-		$votable = new \webfox\T3rating\Domain\Model\Option();
-		$objectStorageHoldingExactlyOneVotable = new \TYPO3\CMS\Extbase\Persistence\Generic\ObjectStorage();
-		$objectStorageHoldingExactlyOneVotable->attach($votable);
-		$this->fixture->addVotable($votable);
+	public function addOptionToObjectStorageHoldingOptions() {
+		$option = new \webfox\T3rating\Domain\Model\Option();
+		$objectStorageHoldingExactlyOneOption = new \TYPO3\CMS\Extbase\Persistence\Generic\ObjectStorage();
+		$objectStorageHoldingExactlyOneOption->attach($option);
+		$this->fixture->addOption($option);
 
 		$this->assertEquals(
-			$objectStorageHoldingExactlyOneVotable,
-			$this->fixture->getVotables()
+			$objectStorageHoldingExactlyOneOption,
+			$this->fixture->getOptions()
 		);
 	}
 
 	/**
 	 * @test
 	 */
-	public function removeVotableFromObjectStorageHoldingVotables() {
-		$votable = new \webfox\T3rating\Domain\Model\Option();
+	public function removeOptionFromObjectStorageHoldingOptions() {
+		$option = new \webfox\T3rating\Domain\Model\Option();
 		$localObjectStorage = new \TYPO3\CMS\Extbase\Persistence\Generic\ObjectStorage();
-		$localObjectStorage->attach($votable);
-		$localObjectStorage->detach($votable);
-		$this->fixture->addVotable($votable);
-		$this->fixture->removeVotable($votable);
+		$localObjectStorage->attach($option);
+		$localObjectStorage->detach($option);
+		$this->fixture->addOption($option);
+		$this->fixture->removeOption($option);
 
 		$this->assertEquals(
 			$localObjectStorage,
-			$this->fixture->getVotables()
+			$this->fixture->getOptions()
 		);
 	}
 	

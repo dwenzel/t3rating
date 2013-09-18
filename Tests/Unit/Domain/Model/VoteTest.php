@@ -66,12 +66,12 @@ class VoteTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	/**
 	 * @test
 	 */
-	public function getUserReturnsInitialValueForFrontendUser() { }
+	public function getUserReturnsInitialValueForUser() { }
 
 	/**
 	 * @test
 	 */
-	public function setUserForFrontendUserSetsUser() { }
+	public function setUserForUserSetsUser() { }
 	
 	/**
 	 * @test

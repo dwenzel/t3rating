@@ -58,12 +58,11 @@ class Option extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $hint;
 
 	/**
-	 * Content Elements
+	 * Collections
 	 *
-	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\webfox\T3rating\Domain\Model\TtContent>
-	 * @lazy
+	 * @var \string
 	 */
-	protected $contentElements;
+	protected $collections;
 
 	/**
 	 * __construct
@@ -81,51 +80,7 @@ class Option extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * @return void
 	 */
 	protected function initStorageObjects() {
-		/**
-		 * Do not modify this method!
-		 * It will be rewritten on each save in the extension builder
-		 * You may modify the constructor of this class instead
-		 */
-		$this->contentElements = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-	}
-
-	/**
-	 * Adds a TtContent
-	 *
-	 * @param \webfox\T3rating\Domain\Model\TtContent $contentElement
-	 * @return void
-	 */
-	public function addContentElement(\webfox\T3rating\Domain\Model\TtContent $contentElement) {
-		$this->contentElements->attach($contentElement);
-	}
-
-	/**
-	 * Removes a TtContent
-	 *
-	 * @param \webfox\T3rating\Domain\Model\TtContent $contentElementToRemove The TtContent to be removed
-	 * @return void
-	 */
-	public function removeContentElement(\webfox\T3rating\Domain\Model\TtContent $contentElementToRemove) {
-		$this->contentElements->detach($contentElementToRemove);
-	}
-
-	/**
-	 * Returns the contentElements
-	 *
-	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\webfox\T3rating\Domain\Model\TtContent> $contentElements
-	 */
-	public function getContentElements() {
-		return $this->contentElements;
-	}
-
-	/**
-	 * Sets the contentElements
-	 *
-	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\webfox\T3rating\Domain\Model\TtContent> $contentElements
-	 * @return void
-	 */
-	public function setContentElements(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $contentElements) {
-		$this->contentElements = $contentElements;
+		// empty
 	}
 
 	/**
@@ -183,6 +138,25 @@ class Option extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	public function setHint($hint) {
 		$this->hint = $hint;
+	}
+
+	/**
+	 * Returns the collections
+	 *
+	 * @return \string $collections
+	 */
+	public function getCollections() {
+		return $this->collections;
+	}
+
+	/**
+	 * Sets the collections
+	 *
+	 * @param \string $collections
+	 * @return void
+	 */
+	public function setCollections($collections) {
+		$this->collections = $collections;
 	}
 
 }

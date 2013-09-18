@@ -45,7 +45,8 @@ class Vote extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * Frontend User
 	 *
-	 * @var \TYPO3\CMS\Extbase\Domain\Model\FrontendUser
+	 * @var \webfox\T3rating\Domain\Model\User
+	 * @lazy
 	 */
 	protected $user;
 
@@ -55,25 +56,6 @@ class Vote extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * @var \webfox\T3rating\Domain\Model\Voting
 	 */
 	protected $voting;
-
-	/**
-	 * Returns the user
-	 *
-	 * @return \TYPO3\CMS\Extbase\Domain\Model\FrontendUser $user
-	 */
-	public function getUser() {
-		return $this->user;
-	}
-
-	/**
-	 * Sets the user
-	 *
-	 * @param \TYPO3\CMS\Extbase\Domain\Model\FrontendUser $user
-	 * @return void
-	 */
-	public function setUser(\TYPO3\CMS\Extbase\Domain\Model\FrontendUser $user) {
-		$this->user = $user;
-	}
 
 	/**
 	 * Returns the voting
@@ -111,6 +93,25 @@ class Vote extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	public function setSelection(\webfox\T3rating\Domain\Model\Option $selection) {
 		$this->selection = $selection;
+	}
+
+	/**
+	 * Returns the user
+	 *
+	 * @return \webfox\T3rating\Domain\Model\User user
+	 */
+	public function getUser() {
+		return $this->user;
+	}
+
+	/**
+	 * Sets the user
+	 *
+	 * @param \webfox\T3rating\Domain\Model\User $user
+	 * @return \webfox\T3rating\Domain\Model\User user
+	 */
+	public function setUser(\webfox\T3rating\Domain\Model\User $user) {
+		$this->user = $user;
 	}
 
 }
