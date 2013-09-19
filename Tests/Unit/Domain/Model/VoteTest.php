@@ -1,6 +1,6 @@
 <?php
 
-namespace webfox\T3rating\Tests;
+namespace Webfox\T3rating\Tests;
 /***************************************************************
  *  Copyright notice
  *
@@ -27,7 +27,7 @@ namespace webfox\T3rating\Tests;
  ***************************************************************/
 
 /**
- * Test case for class \webfox\T3rating\Domain\Model\Vote.
+ * Test case for class \Webfox\T3rating\Domain\Model\Vote.
  *
  * @version $Id$
  * @copyright Copyright belongs to the respective authors
@@ -41,12 +41,12 @@ namespace webfox\T3rating\Tests;
  */
 class VoteTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	/**
-	 * @var \webfox\T3rating\Domain\Model\Vote
+	 * @var \Webfox\T3rating\Domain\Model\Vote
 	 */
 	protected $fixture;
 
 	public function setUp() {
-		$this->fixture = new \webfox\T3rating\Domain\Model\Vote();
+		$this->fixture = new \Webfox\T3rating\Domain\Model\Vote();
 	}
 
 	public function tearDown() {
@@ -56,22 +56,22 @@ class VoteTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	/**
 	 * @test
 	 */
-	public function getSelectionReturnsInitialValueForOption() { }
+	public function getChoiceReturnsInitialValueForChoice() { }
 
 	/**
 	 * @test
 	 */
-	public function setSelectionForOptionSetsSelection() { }
+	public function setChoiceForChoiceSetsChoice() { }
 	
 	/**
 	 * @test
 	 */
-	public function getUserReturnsInitialValueForUser() { }
+	public function getUserReturnsInitialValueForFrontendUser() { }
 
 	/**
 	 * @test
 	 */
-	public function setUserForUserSetsUser() { }
+	public function setUserForFrontendUserSetsUser() { }
 	
 	/**
 	 * @test

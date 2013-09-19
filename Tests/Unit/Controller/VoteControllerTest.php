@@ -1,5 +1,5 @@
 <?php
-namespace webfox\T3rating\Tests;
+namespace Webfox\T3rating\Tests;
 /***************************************************************
  *  Copyright notice
  *
@@ -45,7 +45,7 @@ class VoteControllerTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	protected $fixture;
 
 	public function setUp() {
-		$this->fixture = new \webfox\T3rating\Domain\Model\Vote();
+		$this->fixture = new \Webfox\T3rating\Domain\Model\Vote();
 	}
 
 	public function tearDown() {

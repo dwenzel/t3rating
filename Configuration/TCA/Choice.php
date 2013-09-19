@@ -3,13 +3,13 @@ if (!defined ('TYPO3_MODE')) {
 	die ('Access denied.');
 }
 
-$TCA['tx_t3rating_domain_model_option'] = array(
-	'ctrl' => $TCA['tx_t3rating_domain_model_option']['ctrl'],
+$TCA['tx_t3rating_domain_model_choice'] = array(
+	'ctrl' => $TCA['tx_t3rating_domain_model_choice']['ctrl'],
 	'interface' => array(
-		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, description, hint, collections',
+		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, description, hint, collection',
 	),
 	'types' => array(
-		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, title, description, hint, collections,--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'),
+		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, title, description, hint, collection,--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'),
 	),
 	'palettes' => array(
 		'1' => array('showitem' => ''),
@@ -37,8 +37,8 @@ $TCA['tx_t3rating_domain_model_option'] = array(
 				'items' => array(
 					array('', 0),
 				),
-				'foreign_table' => 'tx_t3rating_domain_model_option',
-				'foreign_table_where' => 'AND tx_t3rating_domain_model_option.pid=###CURRENT_PID### AND tx_t3rating_domain_model_option.sys_language_uid IN (-1,0)',
+				'foreign_table' => 'tx_t3rating_domain_model_choice',
+				'foreign_table_where' => 'AND tx_t3rating_domain_model_choice.pid=###CURRENT_PID### AND tx_t3rating_domain_model_choice.sys_language_uid IN (-1,0)',
 			),
 		),
 		'l10n_diffsource' => array(
@@ -95,7 +95,7 @@ $TCA['tx_t3rating_domain_model_option'] = array(
 		),
 		'title' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:t3rating/Resources/Private/Language/locallang_db.xlf:tx_t3rating_domain_model_option.title',
+			'label' => 'LLL:EXT:t3rating/Resources/Private/Language/locallang_db.xlf:tx_t3rating_domain_model_choice.title',
 			'config' => array(
 				'type' => 'input',
 				'size' => 30,
@@ -104,7 +104,7 @@ $TCA['tx_t3rating_domain_model_option'] = array(
 		),
 		'description' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:t3rating/Resources/Private/Language/locallang_db.xlf:tx_t3rating_domain_model_option.description',
+			'label' => 'LLL:EXT:t3rating/Resources/Private/Language/locallang_db.xlf:tx_t3rating_domain_model_choice.description',
 			'config' => array(
 				'type' => 'text',
 				'cols' => 40,
@@ -125,7 +125,7 @@ $TCA['tx_t3rating_domain_model_option'] = array(
 		),
 		'hint' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:t3rating/Resources/Private/Language/locallang_db.xlf:tx_t3rating_domain_model_option.hint',
+			'label' => 'LLL:EXT:t3rating/Resources/Private/Language/locallang_db.xlf:tx_t3rating_domain_model_choice.hint',
 			'config' => array(
 				'type' => 'text',
 				'cols' => 40,
@@ -144,29 +144,25 @@ $TCA['tx_t3rating_domain_model_option'] = array(
 			),
 			'defaultExtras' => 'richtext:rte_transform[flag=rte_enabled|mode=ts]',
 		),
-		'collections' => array(
+		'collection' => array(
 			'exclude' => 1,
-			'label' => 'LLL:EXT:t3rating/Resources/Private/Language/locallang_db.xlf:tx_t3rating_domain_model_option.collections',
+			'label' => 'LLL:EXT:t3rating/Resources/Private/Language/locallang_db.xlf:tx_t3rating_domain_model_choice.collection',
 			'config' => array(
-				'type' => 'group',
-				'internal_type' => 'folder',
-				'size' => 5,
+				'type' => 'inline',
+				'foreign_table' => 'sys_file_collection',
+				'foreign_field' => 'choice',
+				'maxitems'      => 9999,
+				'appearance' => array(
+					'collapseAll' => 0,
+					'levelLinksPosition' => 'top',
+					'showSynchronizationLink' => 1,
+					'showPossibleLocalizationRecords' => 1,
+					'showAllLocalizationLink' => 1
+				),
 			),
 		),
 	),
 );
 
 ## EXTENSION BUILDER DEFAULTS END TOKEN - Everything BEFORE this line is overwritten with the defaults of the extension builder
-
-$TCA['tx_t3rating_domain_model_option']['columns']['collections']= array(
-	'exclude' => 1,	
-	'label' => 'LLL:EXT:t3rating/Resources/Private/Language/locallang_db.xlf:tx_t3rating_domain_model_option.collections',
-	'config' => array(
-		'type' => 'group',
-		'internal_type' => 'db',
-		'allowed' => 'sys_file_collection',
-		'size' => 5,
-	),
-);
 ?>
-

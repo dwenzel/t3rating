@@ -1,6 +1,6 @@
 <?php
 
-namespace webfox\T3rating\Tests;
+namespace Webfox\T3rating\Tests;
 /***************************************************************
  *  Copyright notice
  *
@@ -27,7 +27,7 @@ namespace webfox\T3rating\Tests;
  ***************************************************************/
 
 /**
- * Test case for class \webfox\T3rating\Domain\Model\Voting.
+ * Test case for class \Webfox\T3rating\Domain\Model\Voting.
  *
  * @version $Id$
  * @copyright Copyright belongs to the respective authors
@@ -41,18 +41,35 @@ namespace webfox\T3rating\Tests;
  */
 class VotingTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	/**
-	 * @var \webfox\T3rating\Domain\Model\Voting
+	 * @var \Webfox\T3rating\Domain\Model\Voting
 	 */
 	protected $fixture;
 
 	public function setUp() {
-		$this->fixture = new \webfox\T3rating\Domain\Model\Voting();
+		$this->fixture = new \Webfox\T3rating\Domain\Model\Voting();
 	}
 
 	public function tearDown() {
 		unset($this->fixture);
 	}
 
+	/**
+	 * @test
+	 */
+	public function getTitleReturnsInitialValueForString() { }
+
+	/**
+	 * @test
+	 */
+	public function setTitleForStringSetsTitle() { 
+		$this->fixture->setTitle('Conceived at T3CON10');
+
+		$this->assertSame(
+			'Conceived at T3CON10',
+			$this->fixture->getTitle()
+		);
+	}
+	
 	/**
 	 * @test
 	 */
@@ -78,17 +95,22 @@ class VotingTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	/**
 	 * @test
 	 */
-	public function getTitleReturnsInitialValueForString() { }
+	public function getVotesCountReturnsInitialValueForInteger() { 
+		$this->assertSame(
+			0,
+			$this->fixture->getVotesCount()
+		);
+	}
 
 	/**
 	 * @test
 	 */
-	public function setTitleForStringSetsTitle() { 
-		$this->fixture->setTitle('Conceived at T3CON10');
+	public function setVotesCountForIntegerSetsVotesCount() { 
+		$this->fixture->setVotesCount(12);
 
 		$this->assertSame(
-			'Conceived at T3CON10',
-			$this->fixture->getTitle()
+			12,
+			$this->fixture->getVotesCount()
 		);
 	}
 	
@@ -146,58 +168,58 @@ class VotingTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	/**
 	 * @test
 	 */
-	public function getOptionsReturnsInitialValueForOption() { 
+	public function getChoicesReturnsInitialValueForChoice() { 
 		$newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\Generic\ObjectStorage();
 		$this->assertEquals(
 			$newObjectStorage,
-			$this->fixture->getOptions()
+			$this->fixture->getChoices()
 		);
 	}
 
 	/**
 	 * @test
 	 */
-	public function setOptionsForObjectStorageContainingOptionSetsOptions() { 
-		$option = new \webfox\T3rating\Domain\Model\Option();
-		$objectStorageHoldingExactlyOneOptions = new \TYPO3\CMS\Extbase\Persistence\Generic\ObjectStorage();
-		$objectStorageHoldingExactlyOneOptions->attach($option);
-		$this->fixture->setOptions($objectStorageHoldingExactlyOneOptions);
+	public function setChoicesForObjectStorageContainingChoiceSetsChoices() { 
+		$choice = new \Webfox\T3rating\Domain\Model\Choice();
+		$objectStorageHoldingExactlyOneChoices = new \TYPO3\CMS\Extbase\Persistence\Generic\ObjectStorage();
+		$objectStorageHoldingExactlyOneChoices->attach($choice);
+		$this->fixture->setChoices($objectStorageHoldingExactlyOneChoices);
 
 		$this->assertSame(
-			$objectStorageHoldingExactlyOneOptions,
-			$this->fixture->getOptions()
+			$objectStorageHoldingExactlyOneChoices,
+			$this->fixture->getChoices()
 		);
 	}
 	
 	/**
 	 * @test
 	 */
-	public function addOptionToObjectStorageHoldingOptions() {
-		$option = new \webfox\T3rating\Domain\Model\Option();
-		$objectStorageHoldingExactlyOneOption = new \TYPO3\CMS\Extbase\Persistence\Generic\ObjectStorage();
-		$objectStorageHoldingExactlyOneOption->attach($option);
-		$this->fixture->addOption($option);
+	public function addChoiceToObjectStorageHoldingChoices() {
+		$choice = new \Webfox\T3rating\Domain\Model\Choice();
+		$objectStorageHoldingExactlyOneChoice = new \TYPO3\CMS\Extbase\Persistence\Generic\ObjectStorage();
+		$objectStorageHoldingExactlyOneChoice->attach($choice);
+		$this->fixture->addChoice($choice);
 
 		$this->assertEquals(
-			$objectStorageHoldingExactlyOneOption,
-			$this->fixture->getOptions()
+			$objectStorageHoldingExactlyOneChoice,
+			$this->fixture->getChoices()
 		);
 	}
 
 	/**
 	 * @test
 	 */
-	public function removeOptionFromObjectStorageHoldingOptions() {
-		$option = new \webfox\T3rating\Domain\Model\Option();
+	public function removeChoiceFromObjectStorageHoldingChoices() {
+		$choice = new \Webfox\T3rating\Domain\Model\Choice();
 		$localObjectStorage = new \TYPO3\CMS\Extbase\Persistence\Generic\ObjectStorage();
-		$localObjectStorage->attach($option);
-		$localObjectStorage->detach($option);
-		$this->fixture->addOption($option);
-		$this->fixture->removeOption($option);
+		$localObjectStorage->attach($choice);
+		$localObjectStorage->detach($choice);
+		$this->fixture->addChoice($choice);
+		$this->fixture->removeChoice($choice);
 
 		$this->assertEquals(
 			$localObjectStorage,
-			$this->fixture->getOptions()
+			$this->fixture->getChoices()
 		);
 	}
 	

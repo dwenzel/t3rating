@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2013-09-18T16:41:18Z" product-name="t3rating">
+	<file source-language="en" datatype="plaintext" original="messages" date="2013-09-19T17:20:01Z" product-name="t3rating">
 		<header/>
 		<body>
 
 			<trans-unit id="tx_t3rating_domain_model_voting">
 				<source>Voting</source>
 			</trans-unit>
-			<trans-unit id="tx_t3rating_domain_model_voting.type">
-				<source>type</source>
-			</trans-unit>
 			<trans-unit id="tx_t3rating_domain_model_voting.title">
 				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_t3rating_domain_model_voting.type">
+				<source>Voting Type</source>
+			</trans-unit>
+			<trans-unit id="tx_t3rating_domain_model_voting.votes_count">
+				<source>Votes per User Count</source>
 			</trans-unit>
 			<trans-unit id="tx_t3rating_domain_model_voting.description">
 				<source>Description</source>
@@ -22,30 +25,30 @@
 			<trans-unit id="tx_t3rating_domain_model_voting.image">
 				<source>image</source>
 			</trans-unit>
-			<trans-unit id="tx_t3rating_domain_model_voting.options">
+			<trans-unit id="tx_t3rating_domain_model_voting.choices">
 				<source>Voting Options</source>
 			</trans-unit>
 			
-			<trans-unit id="tx_t3rating_domain_model_option">
+			<trans-unit id="tx_t3rating_domain_model_choice">
 				<source>Eligible item for a voting </source>
 			</trans-unit>
-			<trans-unit id="tx_t3rating_domain_model_option.title">
+			<trans-unit id="tx_t3rating_domain_model_choice.title">
 				<source>Title</source>
 			</trans-unit>
-			<trans-unit id="tx_t3rating_domain_model_option.description">
+			<trans-unit id="tx_t3rating_domain_model_choice.description">
 				<source>description</source>
 			</trans-unit>
-			<trans-unit id="tx_t3rating_domain_model_option.hint">
+			<trans-unit id="tx_t3rating_domain_model_choice.hint">
 				<source>hint</source>
 			</trans-unit>
-			<trans-unit id="tx_t3rating_domain_model_option.collections">
-				<source>Collections</source>
+			<trans-unit id="tx_t3rating_domain_model_choice.collection">
+				<source>Collection</source>
 			</trans-unit>
 			
 			<trans-unit id="tx_t3rating_domain_model_vote">
 				<source>Vote</source>
 			</trans-unit>
-			<trans-unit id="tx_t3rating_domain_model_vote.selection">
+			<trans-unit id="tx_t3rating_domain_model_vote.choice">
 				<source>Selected option</source>
 			</trans-unit>
 			<trans-unit id="tx_t3rating_domain_model_vote.user">
@@ -55,8 +58,15 @@
 				<source>voting</source>
 			</trans-unit>
 			
+			<trans-unit id="tx_t3rating_domain_model_collection">
+				<source>Collection</source>
+			</trans-unit>
+			
 			<trans-unit id="tx_t3rating_domain_model_user">
 				<source>User</source>
+			</trans-unit>
+			<trans-unit id="tx_t3rating_domain_model_user.collections">
+				<source>Collections</source>
 			</trans-unit>
 			
 		</body>

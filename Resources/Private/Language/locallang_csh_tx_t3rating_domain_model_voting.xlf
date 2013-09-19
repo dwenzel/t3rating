@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2013-09-18T16:41:18Z" product-name="t3rating">
+	<file source-language="en" datatype="plaintext" original="messages" date="2013-09-19T17:20:01Z" product-name="t3rating">
 		<header/>
 		<body>
 
-			<trans-unit id="type.description">
-				<source>type</source>
-			</trans-unit>
 			<trans-unit id="title.description">
 				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="type.description">
+				<source>Voting Type</source>
+			</trans-unit>
+			<trans-unit id="votes_count.description">
+				<source>Votes per User Count</source>
 			</trans-unit>
 			<trans-unit id="description.description">
 				<source>Description</source>
@@ -19,7 +22,7 @@
 			<trans-unit id="image.description">
 				<source>image</source>
 			</trans-unit>
-			<trans-unit id="options.description">
+			<trans-unit id="choices.description">
 				<source>Voting Options</source>
 			</trans-unit>
 		</body>

@@ -6,12 +6,13 @@ CREATE TABLE tx_t3rating_domain_model_voting (
 	uid int(11) NOT NULL auto_increment,
 	pid int(11) DEFAULT '0' NOT NULL,
 
-	type int(11) DEFAULT '0' NOT NULL,
 	title varchar(255) DEFAULT '' NOT NULL,
+	type int(11) DEFAULT '0' NOT NULL,
+	votes_count int(11) DEFAULT '0' NOT NULL,
 	description text NOT NULL,
 	teaser text NOT NULL,
 	image text NOT NULL,
-	options int(11) unsigned DEFAULT '0' NOT NULL,
+	choices int(11) unsigned DEFAULT '0' NOT NULL,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,
@@ -44,9 +45,9 @@ CREATE TABLE tx_t3rating_domain_model_voting (
 );
 
 #
-# Table structure for table 'tx_t3rating_domain_model_option'
+# Table structure for table 'tx_t3rating_domain_model_choice'
 #
-CREATE TABLE tx_t3rating_domain_model_option (
+CREATE TABLE tx_t3rating_domain_model_choice (
 
 	uid int(11) NOT NULL auto_increment,
 	pid int(11) DEFAULT '0' NOT NULL,
@@ -54,7 +55,7 @@ CREATE TABLE tx_t3rating_domain_model_option (
 	title varchar(255) DEFAULT '' NOT NULL,
 	description text NOT NULL,
 	hint text NOT NULL,
-	collections text NOT NULL,
+	collection int(11) unsigned DEFAULT '0' NOT NULL,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,
@@ -94,7 +95,7 @@ CREATE TABLE tx_t3rating_domain_model_vote (
 	uid int(11) NOT NULL auto_increment,
 	pid int(11) DEFAULT '0' NOT NULL,
 
-	selection int(11) unsigned DEFAULT '0',
+	choice int(11) unsigned DEFAULT '0',
 	user int(11) unsigned DEFAULT '0',
 	voting int(11) unsigned DEFAULT '0',
 
@@ -129,18 +130,30 @@ CREATE TABLE tx_t3rating_domain_model_vote (
 );
 
 #
+# Table structure for table 'sys_file_collection'
+#
+CREATE TABLE sys_file_collection (
+
+	choice int(11) unsigned DEFAULT '0' NOT NULL,
+	user int(11) unsigned DEFAULT '0' NOT NULL,
+
+);
+
+#
 # Table structure for table 'fe_users'
 #
 CREATE TABLE fe_users (
+
+	collections int(11) unsigned DEFAULT '0' NOT NULL,
 
 	tx_extbase_type varchar(255) DEFAULT '' NOT NULL,
 
 );
 
 #
-# Table structure for table 'tx_t3rating_voting_option_mm'
+# Table structure for table 'tx_t3rating_voting_choice_mm'
 #
-CREATE TABLE tx_t3rating_voting_option_mm (
+CREATE TABLE tx_t3rating_voting_choice_mm (
 	uid_local int(11) unsigned DEFAULT '0' NOT NULL,
 	uid_foreign int(11) unsigned DEFAULT '0' NOT NULL,
 	sorting int(11) unsigned DEFAULT '0' NOT NULL,
@@ -148,4 +161,22 @@ CREATE TABLE tx_t3rating_voting_option_mm (
 
 	KEY uid_local (uid_local),
 	KEY uid_foreign (uid_foreign)
+);
+
+#
+# Table structure for table 'sys_file_collection'
+#
+CREATE TABLE sys_file_collection (
+
+	choice  int(11) unsigned DEFAULT '0' NOT NULL,
+
+);
+
+#
+# Table structure for table 'sys_file_collection'
+#
+CREATE TABLE sys_file_collection (
+
+	user  int(11) unsigned DEFAULT '0' NOT NULL,
+
 );

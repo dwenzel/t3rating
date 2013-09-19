@@ -1,6 +1,6 @@
 <?php
 
-namespace webfox\T3rating\Tests;
+namespace Webfox\T3rating\Tests;
 /***************************************************************
  *  Copyright notice
  *
@@ -27,7 +27,7 @@ namespace webfox\T3rating\Tests;
  ***************************************************************/
 
 /**
- * Test case for class \webfox\T3rating\Domain\Model\User.
+ * Test case for class \Webfox\T3rating\Domain\Model\User.
  *
  * @version $Id$
  * @copyright Copyright belongs to the respective authors
@@ -41,23 +41,74 @@ namespace webfox\T3rating\Tests;
  */
 class UserTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	/**
-	 * @var \webfox\T3rating\Domain\Model\User
+	 * @var \Webfox\T3rating\Domain\Model\User
 	 */
 	protected $fixture;
 
 	public function setUp() {
-		$this->fixture = new \webfox\T3rating\Domain\Model\User();
+		$this->fixture = new \Webfox\T3rating\Domain\Model\User();
 	}
 
 	public function tearDown() {
 		unset($this->fixture);
 	}
+
+	/**
+	 * @test
+	 */
+	public function getCollectionsReturnsInitialValueForCollection() { 
+		$newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\Generic\ObjectStorage();
+		$this->assertEquals(
+			$newObjectStorage,
+			$this->fixture->getCollections()
+		);
+	}
+
+	/**
+	 * @test
+	 */
+	public function setCollectionsForObjectStorageContainingCollectionSetsCollections() { 
+		$collection = new \Webfox\T3rating\Domain\Model\Collection();
+		$objectStorageHoldingExactlyOneCollections = new \TYPO3\CMS\Extbase\Persistence\Generic\ObjectStorage();
+		$objectStorageHoldingExactlyOneCollections->attach($collection);
+		$this->fixture->setCollections($objectStorageHoldingExactlyOneCollections);
+
+		$this->assertSame(
+			$objectStorageHoldingExactlyOneCollections,
+			$this->fixture->getCollections()
+		);
+	}
 	
 	/**
 	 * @test
 	 */
-	public function dummyTestToNotLeaveThisFileEmpty() {
-		$this->markTestIncomplete();
+	public function addCollectionToObjectStorageHoldingCollections() {
+		$collection = new \Webfox\T3rating\Domain\Model\Collection();
+		$objectStorageHoldingExactlyOneCollection = new \TYPO3\CMS\Extbase\Persistence\Generic\ObjectStorage();
+		$objectStorageHoldingExactlyOneCollection->attach($collection);
+		$this->fixture->addCollection($collection);
+
+		$this->assertEquals(
+			$objectStorageHoldingExactlyOneCollection,
+			$this->fixture->getCollections()
+		);
+	}
+
+	/**
+	 * @test
+	 */
+	public function removeCollectionFromObjectStorageHoldingCollections() {
+		$collection = new \Webfox\T3rating\Domain\Model\Collection();
+		$localObjectStorage = new \TYPO3\CMS\Extbase\Persistence\Generic\ObjectStorage();
+		$localObjectStorage->attach($collection);
+		$localObjectStorage->detach($collection);
+		$this->fixture->addCollection($collection);
+		$this->fixture->removeCollection($collection);
+
+		$this->assertEquals(
+			$localObjectStorage,
+			$this->fixture->getCollections()
+		);
 	}
 	
 }

@@ -1,5 +1,5 @@
 <?php
-namespace webfox\T3rating\Domain\Model;
+namespace Webfox\T3rating\Domain\Model;
 
 /***************************************************************
  *  Copyright notice
@@ -36,7 +36,15 @@ namespace webfox\T3rating\Domain\Model;
 class Voting extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 
 	/**
-	 * type
+	 * Title
+	 *
+	 * @var \string
+	 * @validate NotEmpty
+	 */
+	protected $title;
+
+	/**
+	 * Voting Type
 	 *
 	 * @var \integer
 	 * @validate NotEmpty
@@ -44,12 +52,11 @@ class Voting extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $type;
 
 	/**
-	 * Title
+	 * Votes per User Count
 	 *
-	 * @var \string
-	 * @validate NotEmpty
+	 * @var \integer
 	 */
-	protected $title;
+	protected $votesCount;
 
 	/**
 	 * Description
@@ -75,10 +82,10 @@ class Voting extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * Voting Options
 	 *
-	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\webfox\T3rating\Domain\Model\Option>
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Webfox\T3rating\Domain\Model\Choice>
 	 * @lazy
 	 */
-	protected $options;
+	protected $choices;
 
 	/**
 	 * __construct
@@ -101,7 +108,7 @@ class Voting extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 		 * It will be rewritten on each save in the extension builder
 		 * You may modify the constructor of this class instead
 		 */
-		$this->options = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+		$this->choices = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
 	}
 
 	/**
@@ -121,6 +128,44 @@ class Voting extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	public function setTitle($title) {
 		$this->title = $title;
+	}
+
+	/**
+	 * Returns the type
+	 *
+	 * @return \integer $type
+	 */
+	public function getType() {
+		return $this->type;
+	}
+
+	/**
+	 * Sets the type
+	 *
+	 * @param \integer $type
+	 * @return void
+	 */
+	public function setType($type) {
+		$this->type = $type;
+	}
+
+	/**
+	 * Returns the votesCount
+	 *
+	 * @return \integer $votesCount
+	 */
+	public function getVotesCount() {
+		return $this->votesCount;
+	}
+
+	/**
+	 * Sets the votesCount
+	 *
+	 * @param \integer $votesCount
+	 * @return void
+	 */
+	public function setVotesCount($votesCount) {
+		$this->votesCount = $votesCount;
 	}
 
 	/**
@@ -181,61 +226,42 @@ class Voting extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	}
 
 	/**
-	 * Adds a Vote
+	 * Adds a Option
 	 *
-	 * @param \webfox\T3rating\Domain\Model\Option $option
-	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\webfox\T3rating\Domain\Model\Option> options
+	 * @param \Webfox\T3rating\Domain\Model\Choice $choice
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Webfox\T3rating\Domain\Model\Choice> choices
 	 */
-	public function addOption(\webfox\T3rating\Domain\Model\Option $option) {
-		$this->options->attach($option);
+	public function addChoice(\Webfox\T3rating\Domain\Model\Choice $choice) {
+		$this->choices->attach($choice);
 	}
 
 	/**
-	 * Removes a Vote
+	 * Removes a Option
 	 *
-	 * @param \webfox\T3rating\Domain\Model\Option $optionToRemove The Option to be removed
-	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\webfox\T3rating\Domain\Model\Option> options
+	 * @param \Webfox\T3rating\Domain\Model\Choice $choiceToRemove The Choice to be removed
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Webfox\T3rating\Domain\Model\Choice> choices
 	 */
-	public function removeOption(\webfox\T3rating\Domain\Model\Option $optionToRemove) {
-		$this->options->detach($optionToRemove);
+	public function removeChoice(\Webfox\T3rating\Domain\Model\Choice $choiceToRemove) {
+		$this->choices->detach($choiceToRemove);
 	}
 
 	/**
-	 * Returns the options
+	 * Returns the choices
 	 *
-	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\webfox\T3rating\Domain\Model\Option> options
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Webfox\T3rating\Domain\Model\Choice> choices
 	 */
-	public function getOptions() {
-		return $this->options;
+	public function getChoices() {
+		return $this->choices;
 	}
 
 	/**
-	 * Sets the options
+	 * Sets the choices
 	 *
-	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\webfox\T3rating\Domain\Model\Option> $options
-	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\webfox\T3rating\Domain\Model\Option> options
+	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Webfox\T3rating\Domain\Model\Choice> $choices
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Webfox\T3rating\Domain\Model\Choice> choices
 	 */
-	public function setOptions(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $options) {
-		$this->options = $options;
-	}
-
-	/**
-	 * Returns the type
-	 *
-	 * @return \integer $type
-	 */
-	public function getType() {
-		return $this->type;
-	}
-
-	/**
-	 * Sets the type
-	 *
-	 * @param \integer $type
-	 * @return void
-	 */
-	public function setType($type) {
-		$this->type = $type;
+	public function setChoices(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $choices) {
+		$this->choices = $choices;
 	}
 
 }

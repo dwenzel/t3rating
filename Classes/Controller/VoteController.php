@@ -1,5 +1,5 @@
 <?php
-namespace webfox\T3rating\Controller;
+namespace Webfox\T3rating\Controller;
 
 /***************************************************************
  *  Copyright notice
@@ -38,10 +38,53 @@ class VoteController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
 	/**
 	 * voteRepository
 	 *
-	 * @var \webfox\T3rating\Domain\Repository\VoteRepository
+	 * @var \Webfox\T3rating\Domain\Repository\VoteRepository
 	 * @inject
 	 */
 	protected $voteRepository;
+
+	/**
+	 * action list
+	 *
+	 * @return void
+	 */
+	public function listAction() {
+		$votes = $this->voteRepository->findAll();
+		$this->view->assign('votes', $votes);
+	}
+
+	/**
+	 * action show
+	 *
+	 * @param \Webfox\T3rating\Domain\Model\Vote $vote
+	 * @return void
+	 */
+	public function showAction(\Webfox\T3rating\Domain\Model\Vote $vote) {
+		$this->view->assign('vote', $vote);
+	}
+
+	/**
+	 * action new
+	 *
+	 * @param \Webfox\T3rating\Domain\Model\Vote $newVote
+	 * @dontvalidate $newVote
+	 * @return void
+	 */
+	public function newAction(\Webfox\T3rating\Domain\Model\Vote $newVote = NULL) {
+		$this->view->assign('newVote', $newVote);
+	}
+
+	/**
+	 * action create
+	 *
+	 * @param \Webfox\T3rating\Domain\Model\Vote $newVote
+	 * @return void
+	 */
+	public function createAction(\Webfox\T3rating\Domain\Model\Vote $newVote) {
+		$this->voteRepository->add($newVote);
+		$this->flashMessageContainer->add('Your new Vote was created.');
+		$this->redirect('list');
+	}
 
 }
 ?>

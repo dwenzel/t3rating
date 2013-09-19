@@ -1,6 +1,6 @@
 <?php
 
-namespace webfox\T3rating\Tests;
+namespace Webfox\T3rating\Tests;
 /***************************************************************
  *  Copyright notice
  *
@@ -27,7 +27,7 @@ namespace webfox\T3rating\Tests;
  ***************************************************************/
 
 /**
- * Test case for class \webfox\T3rating\Domain\Model\Votable.
+ * Test case for class \Webfox\T3rating\Domain\Model\Choice.
  *
  * @version $Id$
  * @copyright Copyright belongs to the respective authors
@@ -39,14 +39,14 @@ namespace webfox\T3rating\Tests;
  * @author Dirk Wenzel <wenzel@webfox01.de>
  * @author Michael Kasten <kasten@webfox01.de>
  */
-class VotableTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
+class ChoiceTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	/**
-	 * @var \webfox\T3rating\Domain\Model\Votable
+	 * @var \Webfox\T3rating\Domain\Model\Choice
 	 */
 	protected $fixture;
 
 	public function setUp() {
-		$this->fixture = new \webfox\T3rating\Domain\Model\Votable();
+		$this->fixture = new \Webfox\T3rating\Domain\Model\Choice();
 	}
 
 	public function tearDown() {
@@ -107,58 +107,58 @@ class VotableTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	/**
 	 * @test
 	 */
-	public function getContentElementsReturnsInitialValueForTtContent() { 
+	public function getCollectionReturnsInitialValueForCollection() { 
 		$newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\Generic\ObjectStorage();
 		$this->assertEquals(
 			$newObjectStorage,
-			$this->fixture->getContentElements()
+			$this->fixture->getCollection()
 		);
 	}
 
 	/**
 	 * @test
 	 */
-	public function setContentElementsForObjectStorageContainingTtContentSetsContentElements() { 
-		$contentElement = new \webfox\T3rating\Domain\Model\TtContent();
-		$objectStorageHoldingExactlyOneContentElements = new \TYPO3\CMS\Extbase\Persistence\Generic\ObjectStorage();
-		$objectStorageHoldingExactlyOneContentElements->attach($contentElement);
-		$this->fixture->setContentElements($objectStorageHoldingExactlyOneContentElements);
+	public function setCollectionForObjectStorageContainingCollectionSetsCollection() { 
+		$collection = new \Webfox\T3rating\Domain\Model\Collection();
+		$objectStorageHoldingExactlyOneCollection = new \TYPO3\CMS\Extbase\Persistence\Generic\ObjectStorage();
+		$objectStorageHoldingExactlyOneCollection->attach($collection);
+		$this->fixture->setCollection($objectStorageHoldingExactlyOneCollection);
 
 		$this->assertSame(
-			$objectStorageHoldingExactlyOneContentElements,
-			$this->fixture->getContentElements()
+			$objectStorageHoldingExactlyOneCollection,
+			$this->fixture->getCollection()
 		);
 	}
 	
 	/**
 	 * @test
 	 */
-	public function addContentElementToObjectStorageHoldingContentElements() {
-		$contentElement = new \webfox\T3rating\Domain\Model\TtContent();
-		$objectStorageHoldingExactlyOneContentElement = new \TYPO3\CMS\Extbase\Persistence\Generic\ObjectStorage();
-		$objectStorageHoldingExactlyOneContentElement->attach($contentElement);
-		$this->fixture->addContentElement($contentElement);
+	public function addCollectionToObjectStorageHoldingCollection() {
+		$collection = new \Webfox\T3rating\Domain\Model\Collection();
+		$objectStorageHoldingExactlyOneCollection = new \TYPO3\CMS\Extbase\Persistence\Generic\ObjectStorage();
+		$objectStorageHoldingExactlyOneCollection->attach($collection);
+		$this->fixture->addCollection($collection);
 
 		$this->assertEquals(
-			$objectStorageHoldingExactlyOneContentElement,
-			$this->fixture->getContentElements()
+			$objectStorageHoldingExactlyOneCollection,
+			$this->fixture->getCollection()
 		);
 	}
 
 	/**
 	 * @test
 	 */
-	public function removeContentElementFromObjectStorageHoldingContentElements() {
-		$contentElement = new \webfox\T3rating\Domain\Model\TtContent();
+	public function removeCollectionFromObjectStorageHoldingCollection() {
+		$collection = new \Webfox\T3rating\Domain\Model\Collection();
 		$localObjectStorage = new \TYPO3\CMS\Extbase\Persistence\Generic\ObjectStorage();
-		$localObjectStorage->attach($contentElement);
-		$localObjectStorage->detach($contentElement);
-		$this->fixture->addContentElement($contentElement);
-		$this->fixture->removeContentElement($contentElement);
+		$localObjectStorage->attach($collection);
+		$localObjectStorage->detach($collection);
+		$this->fixture->addCollection($collection);
+		$this->fixture->removeCollection($collection);
 
 		$this->assertEquals(
 			$localObjectStorage,
-			$this->fixture->getContentElements()
+			$this->fixture->getCollection()
 		);
 	}
 	

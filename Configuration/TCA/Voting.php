@@ -6,10 +6,10 @@ if (!defined ('TYPO3_MODE')) {
 $TCA['tx_t3rating_domain_model_voting'] = array(
 	'ctrl' => $TCA['tx_t3rating_domain_model_voting']['ctrl'],
 	'interface' => array(
-		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, type, title, description, teaser, image, options',
+		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, type, votes_count, description, teaser, image, choices',
 	),
 	'types' => array(
-		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, type, title, description, teaser, image, options,--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'),
+		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, title, type, votes_count, description, teaser, image, choices,--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'),
 	),
 	'palettes' => array(
 		'1' => array('showitem' => ''),
@@ -93,6 +93,15 @@ $TCA['tx_t3rating_domain_model_voting'] = array(
 				),
 			),
 		),
+		'title' => array(
+			'exclude' => 0,
+			'label' => 'LLL:EXT:t3rating/Resources/Private/Language/locallang_db.xlf:tx_t3rating_domain_model_voting.title',
+			'config' => array(
+				'type' => 'input',
+				'size' => 30,
+				'eval' => 'trim,required'
+			),
+		),
 		'type' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:t3rating/Resources/Private/Language/locallang_db.xlf:tx_t3rating_domain_model_voting.type',
@@ -106,13 +115,13 @@ $TCA['tx_t3rating_domain_model_voting'] = array(
 				'eval' => 'required'
 			),
 		),
-		'title' => array(
-			'exclude' => 0,
-			'label' => 'LLL:EXT:t3rating/Resources/Private/Language/locallang_db.xlf:tx_t3rating_domain_model_voting.title',
+		'votes_count' => array(
+			'exclude' => 1,
+			'label' => 'LLL:EXT:t3rating/Resources/Private/Language/locallang_db.xlf:tx_t3rating_domain_model_voting.votes_count',
 			'config' => array(
 				'type' => 'input',
-				'size' => 30,
-				'eval' => 'trim,required'
+				'size' => 4,
+				'eval' => 'int'
 			),
 		),
 		'description' => array(
@@ -170,13 +179,13 @@ $TCA['tx_t3rating_domain_model_voting'] = array(
 				'disallowed' => '',
 			),
 		),
-		'options' => array(
+		'choices' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:t3rating/Resources/Private/Language/locallang_db.xlf:tx_t3rating_domain_model_voting.options',
+			'label' => 'LLL:EXT:t3rating/Resources/Private/Language/locallang_db.xlf:tx_t3rating_domain_model_voting.choices',
 			'config' => array(
 				'type' => 'select',
-				'foreign_table' => 'tx_t3rating_domain_model_option',
-				'MM' => 'tx_t3rating_voting_option_mm',
+				'foreign_table' => 'tx_t3rating_domain_model_choice',
+				'MM' => 'tx_t3rating_voting_choice_mm',
 				'size' => 10,
 				'autoSizeMax' => 30,
 				'maxitems' => 9999,
@@ -197,7 +206,7 @@ $TCA['tx_t3rating_domain_model_voting'] = array(
 						'title' => 'Create new',
 						'icon' => 'add.gif',
 						'params' => array(
-							'table' => 'tx_t3rating_domain_model_option',
+							'table' => 'tx_t3rating_domain_model_choice',
 							'pid' => '###CURRENT_PID###',
 							'setValue' => 'prepend'
 							),

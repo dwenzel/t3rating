@@ -1,5 +1,5 @@
 <?php
-namespace webfox\T3rating\Domain\Model;
+namespace Webfox\T3rating\Domain\Model;
 
 /***************************************************************
  *  Copyright notice
@@ -38,14 +38,15 @@ class Vote extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * Selected option
 	 *
-	 * @var \webfox\T3rating\Domain\Model\Option
+	 * @var \Webfox\T3rating\Domain\Model\Choice
+	 * @lazy
 	 */
-	protected $selection;
+	protected $choice;
 
 	/**
 	 * Frontend User
 	 *
-	 * @var \webfox\T3rating\Domain\Model\User
+	 * @var \TYPO3\CMS\Extbase\Domain\Model\FrontendUser
 	 * @lazy
 	 */
 	protected $user;
@@ -53,52 +54,14 @@ class Vote extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * voting
 	 *
-	 * @var \webfox\T3rating\Domain\Model\Voting
+	 * @var \Webfox\T3rating\Domain\Model\Voting
 	 */
 	protected $voting;
 
 	/**
-	 * Returns the voting
-	 *
-	 * @return \webfox\T3rating\Domain\Model\Voting $voting
-	 */
-	public function getVoting() {
-		return $this->voting;
-	}
-
-	/**
-	 * Sets the voting
-	 *
-	 * @param \webfox\T3rating\Domain\Model\Voting $voting
-	 * @return void
-	 */
-	public function setVoting(\webfox\T3rating\Domain\Model\Voting $voting) {
-		$this->voting = $voting;
-	}
-
-	/**
-	 * Returns the selection
-	 *
-	 * @return \webfox\T3rating\Domain\Model\Option selection
-	 */
-	public function getSelection() {
-		return $this->selection;
-	}
-
-	/**
-	 * Sets the selection
-	 *
-	 * @param \webfox\T3rating\Domain\Model\Option $selection
-	 * @return \webfox\T3rating\Domain\Model\Option selection
-	 */
-	public function setSelection(\webfox\T3rating\Domain\Model\Option $selection) {
-		$this->selection = $selection;
-	}
-
-	/**
 	 * Returns the user
 	 *
-	 * @return \webfox\T3rating\Domain\Model\User user
+	 * @return \TYPO3\CMS\Extbase\Domain\Model\FrontendUser $user
 	 */
 	public function getUser() {
 		return $this->user;
@@ -107,11 +70,49 @@ class Vote extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * Sets the user
 	 *
-	 * @param \webfox\T3rating\Domain\Model\User $user
-	 * @return \webfox\T3rating\Domain\Model\User user
+	 * @param \TYPO3\CMS\Extbase\Domain\Model\FrontendUser $user
+	 * @return void
 	 */
-	public function setUser(\webfox\T3rating\Domain\Model\User $user) {
+	public function setUser(\TYPO3\CMS\Extbase\Domain\Model\FrontendUser $user) {
 		$this->user = $user;
+	}
+
+	/**
+	 * Returns the voting
+	 *
+	 * @return \Webfox\T3rating\Domain\Model\Voting $voting
+	 */
+	public function getVoting() {
+		return $this->voting;
+	}
+
+	/**
+	 * Sets the voting
+	 *
+	 * @param \Webfox\T3rating\Domain\Model\Voting $voting
+	 * @return void
+	 */
+	public function setVoting(\Webfox\T3rating\Domain\Model\Voting $voting) {
+		$this->voting = $voting;
+	}
+
+	/**
+	 * Returns the choice
+	 *
+	 * @return \Webfox\T3rating\Domain\Model\Choice choice
+	 */
+	public function getChoice() {
+		return $this->choice;
+	}
+
+	/**
+	 * Sets the choice
+	 *
+	 * @param \Webfox\T3rating\Domain\Model\Choice $choice
+	 * @return \Webfox\T3rating\Domain\Model\Choice choice
+	 */
+	public function setChoice(\Webfox\T3rating\Domain\Model\Choice $choice) {
+		$this->choice = $choice;
 	}
 
 }

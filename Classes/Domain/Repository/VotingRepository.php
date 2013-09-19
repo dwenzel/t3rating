@@ -1,5 +1,5 @@
 <?php
-namespace webfox\T3rating\Domain\Repository;
+namespace Webfox\T3rating\Domain\Repository;
 
 /***************************************************************
  *  Copyright notice

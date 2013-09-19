@@ -1,5 +1,5 @@
 <?php
-namespace webfox\T3rating\Controller;
+namespace Webfox\T3rating\Domain\Model;
 
 /***************************************************************
  *  Copyright notice
@@ -33,15 +33,27 @@ namespace webfox\T3rating\Controller;
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
-class OptionController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
+class Collection extends \TYPO3\CMS\Core\Resource\Collection\StaticFileCollection {
 
 	/**
-	 * optionRepository
+	 * __construct
 	 *
-	 * @var \webfox\T3rating\Domain\Repository\OptionRepository
-	 * @inject
+	 * @return Collection
 	 */
-	protected $optionRepository;
+	public function __construct() {
+		//Do not remove the next line: It would break the functionality
+		$this->initStorageObjects();
+	}
+
+	/**
+	 * Initializes all ObjectStorage properties.
+	 *
+	 * @return void
+	 */
+	protected function initStorageObjects() {
+		// empty
+	}
 
 }
+
 ?>

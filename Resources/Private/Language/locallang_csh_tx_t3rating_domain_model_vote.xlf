@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2013-09-18T16:41:18Z" product-name="t3rating">
+	<file source-language="en" datatype="plaintext" original="messages" date="2013-09-19T17:20:01Z" product-name="t3rating">
 		<header/>
 		<body>
 
-			<trans-unit id="selection.description">
+			<trans-unit id="choice.description">
 				<source>Selected option</source>
 			</trans-unit>
 			<trans-unit id="user.description">
