@@ -1,5 +1,5 @@
 <?php
-namespace Webfox\T3rating\Domain\Model;
+namespace Webfox\T3rating\Controller;
 
 /***************************************************************
  *  Copyright notice
@@ -33,53 +33,15 @@ namespace Webfox\T3rating\Domain\Model;
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
-class Collection extends \TYPO3\CMS\Core\Resource\Collection\StaticFileCollection {
+class CollectionController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 
 	/**
-	 * Frontend User
+	 * collectionRepository
 	 *
-	 * @var \TYPO3\CMS\Extbase\Domain\Model\FrontendUser
+	 * @var \Webfox\T3rating\Domain\Repository\CollectionRepository
+	 * @inject
 	 */
-	protected $feUser;
-
-	/**
-	 * __construct
-	 *
-	 * @return Collection
-	 */
-	public function __construct() {
-		//Do not remove the next line: It would break the functionality
-		$this->initStorageObjects();
-	}
-
-	/**
-	 * Initializes all ObjectStorage properties.
-	 *
-	 * @return void
-	 */
-	protected function initStorageObjects() {
-		// empty
-	}
-
-	/**
-	 * Returns the feUser
-	 *
-	 * @return \TYPO3\CMS\Extbase\Domain\Model\FrontendUser $feUser
-	 */
-	public function getFeUser() {
-		return $this->feUser;
-	}
-
-	/**
-	 * Sets the feUser
-	 *
-	 * @param \TYPO3\CMS\Extbase\Domain\Model\FrontendUser $feUser
-	 * @return void
-	 */
-	public function setFeUser(\TYPO3\CMS\Extbase\Domain\Model\FrontendUser $feUser) {
-		$this->feUser = $feUser;
-	}
+	protected $collectionRepository;
 
 }
-
 ?>

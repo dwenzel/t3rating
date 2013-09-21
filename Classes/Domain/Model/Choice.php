@@ -63,7 +63,7 @@ class Choice extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Webfox\T3rating\Domain\Model\Collection>
 	 * @lazy
 	 */
-	protected $collection;
+	protected $collections;
 
 	/**
 	 * __construct
@@ -86,7 +86,7 @@ class Choice extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 		 * It will be rewritten on each save in the extension builder
 		 * You may modify the constructor of this class instead
 		 */
-		$this->collection = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+		$this->collections = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
 	}
 
 	/**
@@ -150,39 +150,39 @@ class Choice extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * Adds a Collection
 	 *
 	 * @param \Webfox\T3rating\Domain\Model\Collection $collection
-	 * @return void
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Webfox\T3rating\Domain\Model\Collection> collections
 	 */
 	public function addCollection(\Webfox\T3rating\Domain\Model\Collection $collection) {
-		$this->collection->attach($collection);
+		$this->collections->attach($collections);
 	}
 
 	/**
 	 * Removes a Collection
 	 *
 	 * @param \Webfox\T3rating\Domain\Model\Collection $collectionToRemove The Collection to be removed
-	 * @return void
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Webfox\T3rating\Domain\Model\Collection> collections
 	 */
 	public function removeCollection(\Webfox\T3rating\Domain\Model\Collection $collectionToRemove) {
-		$this->collection->detach($collectionToRemove);
+		$this->collections->detach($collectionToRemove);
 	}
 
 	/**
-	 * Returns the collection
+	 * Returns the collections
 	 *
-	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Webfox\T3rating\Domain\Model\Collection> $collection
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Webfox\T3rating\Domain\Model\Collection> collections
 	 */
-	public function getCollection() {
-		return $this->collection;
+	public function getCollections() {
+		return $this->collections;
 	}
 
 	/**
-	 * Sets the collection
+	 * Sets the collections
 	 *
-	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Webfox\T3rating\Domain\Model\Collection> $collection
-	 * @return void
+	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Webfox\T3rating\Domain\Model\Collection> $collections
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Webfox\T3rating\Domain\Model\Collection> collections
 	 */
-	public function setCollection(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $collection) {
-		$this->collection = $collection;
+	public function setCollections(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $collections) {
+		$this->collections = $collections;
 	}
 
 }
