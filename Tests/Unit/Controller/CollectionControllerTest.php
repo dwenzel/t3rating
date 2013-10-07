@@ -1,5 +1,4 @@
 <?php
-
 namespace Webfox\T3rating\Tests;
 /***************************************************************
  *  Copyright notice
@@ -27,7 +26,7 @@ namespace Webfox\T3rating\Tests;
  ***************************************************************/
 
 /**
- * Test case for class \Webfox\T3rating\Domain\Model\Collection.
+ * Test case for class Tx_T3rating_Controller_CollectionController.
  *
  * @version $Id$
  * @copyright Copyright belongs to the respective authors
@@ -39,9 +38,9 @@ namespace Webfox\T3rating\Tests;
  * @author Dirk Wenzel <wenzel@webfox01.de>
  * @author Michael Kasten <kasten@webfox01.de>
  */
-class CollectionTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
+class CollectionControllerTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	/**
-	 * @var \Webfox\T3rating\Domain\Model\Collection
+	 * @var 
 	 */
 	protected $fixture;
 
@@ -56,12 +55,9 @@ class CollectionTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	/**
 	 * @test
 	 */
-	public function getFeUserReturnsInitialValueForFrontendUser() { }
+	public function dummyMethod() {
+		$this->markTestIncomplete();
+	}
 
-	/**
-	 * @test
-	 */
-	public function setFeUserForFrontendUserSetsFeUser() { }
-	
 }
 ?>

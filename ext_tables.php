@@ -69,7 +69,7 @@ $TCA['tx_t3rating_domain_model_choice'] = array(
 			'starttime' => 'starttime',
 			'endtime' => 'endtime',
 		),
-		'searchFields' => 'title,description,hint,collection,',
+		'searchFields' => 'title,description,hint,collections,',
 		'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/Choice.php',
 		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_t3rating_domain_model_choice.gif'
 	),
@@ -103,64 +103,39 @@ $TCA['tx_t3rating_domain_model_vote'] = array(
 		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_t3rating_domain_model_vote.gif'
 	),
 );
-/*
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('sys_file_collection', 'EXT:t3rating/Resources/Private/Language/locallang_csh_sys_file_collection.xlf');
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('sys_file_collection');
-$TCA['sys_file_collection'] = array(
-	'ctrl' => array(
-		'title'	=> 'LLL:EXT:t3rating/Resources/Private/Language/locallang_db.xlf:sys_file_collection',
-		'label' => 'uid',
-		'tstamp' => 'tstamp',
-		'crdate' => 'crdate',
-		'cruser_id' => 'cruser_id',
-		'dividers2tabs' => TRUE,
 
-		'versioningWS' => 2,
-		'versioning_followPages' => TRUE,
-		'origUid' => 't3_origuid',
-		'languageField' => 'sys_language_uid',
-		'transOrigPointerField' => 'l10n_parent',
-		'transOrigDiffSourceField' => 'l10n_diffsource',
-		'delete' => 'deleted',
-		'enablecolumns' => array(
-			'disabled' => 'hidden',
-			'starttime' => 'starttime',
-			'endtime' => 'endtime',
-		),
-		'searchFields' => '',
-		'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/Collection.php',
-		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/sys_file_collection.gif'
-	),
-);
-*/
 $tmp_t3rating_columns = array(
 
-	'collections' => array(
-		'exclude' => 1,
-		'label' => 'LLL:EXT:t3rating/Resources/Private/Language/locallang_db.xlf:tx_t3rating_domain_model_user.collections',
+	'fe_user' => array(
+		'exclude' => 0,
+		'label' => 'LLL:EXT:t3rating/Resources/Private/Language/locallang_db.xlf:tx_t3rating_domain_model_collection.fe_user',
 		'config' => array(
-			'type' => 'inline',
-			'foreign_table' => 'sys_file_collection',
-			'foreign_field' => 'user',
-			'maxitems'      => 9999,
-			'appearance' => array(
-				'collapseAll' => 0,
-				'levelLinksPosition' => 'top',
-				'showSynchronizationLink' => 1,
-				'showPossibleLocalizationRecords' => 1,
-				'showAllLocalizationLink' => 1
-			),
+			'type' => 'select',
+			'foreign_table' => 'fe_users',
+			'minitems' => 0,
+			'maxitems' => 1,
 		),
 	),
 );
 
-t3lib_extMgm::addTCAcolumns('fe_users',$tmp_t3rating_columns);
+$tmp_t3rating_columns['choice'] = array(
+	'config' => array(
+		'type' => 'passthrough',
+	)
+);
 
-$TCA['fe_users']['columns'][$TCA['fe_users']['ctrl']['type']]['config']['items'][] = array('LLL:EXT:t3rating/Resources/Private/Language/locallang_db.xlf:fe_users.tx_extbase_type.Tx_T3rating_User','Tx_T3rating_User');
+t3lib_extMgm::addTCAcolumns('sys_file_collection',$tmp_t3rating_columns);
 
-$TCA['fe_users']['types']['Tx_T3rating_User']['showitem'] = $TCA['fe_users']['types']['0']['showitem'];
-$TCA['fe_users']['types']['Tx_T3rating_User']['showitem'] .= ',--div--;LLL:EXT:t3rating/Resources/Private/Language/locallang_db.xlf:tx_t3rating_domain_model_user,';
-$TCA['fe_users']['types']['Tx_T3rating_User']['showitem'] .= 'collections';
+$TCA['sys_file_collection']['columns'][$TCA['sys_file_collection']['ctrl']['type']]['config']['items'][] = array('LLL:EXT:t3rating/Resources/Private/Language/locallang_db.xlf:sys_file_collection.tx_extbase_type.Tx_T3rating_Collection','Tx_T3rating_Collection');
+
+$TCA['sys_file_collection']['types']['Tx_T3rating_Collection']['showitem'] = $TCA['sys_file_collection']['types']['1']['showitem'];
+$TCA['sys_file_collection']['types']['Tx_T3rating_Collection']['showitem'] .= ',--div--;LLL:EXT:t3rating/Resources/Private/Language/locallang_db.xlf:tx_t3rating_domain_model_collection,';
+$TCA['sys_file_collection']['types']['Tx_T3rating_Collection']['showitem'] .= 'fe_user';
+
+
 
 ## EXTENSION BUILDER DEFAULTS END TOKEN - Everything BEFORE this line is overwritten with the defaults of the extension builder
+// @FIXME dw 2013-09-20: generated config above fails  with DB type mismatch. 
+$TCA['sys_file_collection']['types']['static']['showitem'] .= ',--div--;LLL:EXT:t3rating/Resources/Private/Language/locallang_db.xlf:tx_t3rating_domain_model_collection,';
+$TCA['sys_file_collection']['types']['static']['showitem'] .= 'fe_user';
 ?>

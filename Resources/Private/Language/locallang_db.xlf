@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2013-09-19T17:20:01Z" product-name="t3rating">
+	<file source-language="en" datatype="plaintext" original="messages" date="2013-09-20T21:40:06Z" product-name="t3rating">
 		<header/>
 		<body>
 
@@ -41,8 +41,8 @@
 			<trans-unit id="tx_t3rating_domain_model_choice.hint">
 				<source>Hint</source>
 			</trans-unit>
-			<trans-unit id="tx_t3rating_domain_model_choice.collection">
-				<source>Collection</source>
+			<trans-unit id="tx_t3rating_domain_model_choice.collections">
+				<source>Collections</source>
 			</trans-unit>
 
 			<trans-unit id="tx_t3rating_domain_model_vote">
@@ -61,20 +61,12 @@
 			<trans-unit id="tx_t3rating_domain_model_collection">
 				<source>Collection</source>
 			</trans-unit>
+			<trans-unit id="tx_t3rating_domain_model_collection.fe_user">
+				<source>Fe User</source>
+			</trans-unit>
 			
 			<trans-unit id="sys_file_collection.tx_extbase_type.Tx_T3rating_Collection">
 				<source>Rating Collection</source>
-			</trans-unit>
-			
-			<trans-unit id="tx_t3rating_domain_model_user">
-				<source>User</source>
-			</trans-unit>
-			<trans-unit id="tx_t3rating_domain_model_user.collections">
-				<source>Collections</source>
-			</trans-unit>
-			
-			<trans-unit id="fe_users.tx_extbase_type.Tx_T3rating_User">
-				<source>Rating User</source>
 			</trans-unit>
 			
 		</body>

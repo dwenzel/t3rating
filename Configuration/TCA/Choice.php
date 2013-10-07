@@ -6,10 +6,10 @@ if (!defined ('TYPO3_MODE')) {
 $TCA['tx_t3rating_domain_model_choice'] = array(
 	'ctrl' => $TCA['tx_t3rating_domain_model_choice']['ctrl'],
 	'interface' => array(
-		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, description, hint, collection',
+		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, description, hint, collections',
 	),
 	'types' => array(
-		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, title, description, hint, collection,--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'),
+		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, title, description, hint, collections,--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'),
 	),
 	'palettes' => array(
 		'1' => array('showitem' => ''),
@@ -144,9 +144,9 @@ $TCA['tx_t3rating_domain_model_choice'] = array(
 			),
 			'defaultExtras' => 'richtext:rte_transform[flag=rte_enabled|mode=ts]',
 		),
-		'collection' => array(
+		'collections' => array(
 			'exclude' => 1,
-			'label' => 'LLL:EXT:t3rating/Resources/Private/Language/locallang_db.xlf:tx_t3rating_domain_model_choice.collection',
+			'label' => 'LLL:EXT:t3rating/Resources/Private/Language/locallang_db.xlf:tx_t3rating_domain_model_choice.collections',
 			'config' => array(
 				'type' => 'inline',
 				'foreign_table' => 'sys_file_collection',

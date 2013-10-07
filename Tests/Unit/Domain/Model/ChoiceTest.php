@@ -107,33 +107,33 @@ class ChoiceTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	/**
 	 * @test
 	 */
-	public function getCollectionReturnsInitialValueForCollection() { 
+	public function getCollectionsReturnsInitialValueForCollection() { 
 		$newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\Generic\ObjectStorage();
 		$this->assertEquals(
 			$newObjectStorage,
-			$this->fixture->getCollection()
+			$this->fixture->getCollections()
 		);
 	}
 
 	/**
 	 * @test
 	 */
-	public function setCollectionForObjectStorageContainingCollectionSetsCollection() { 
+	public function setCollectionsForObjectStorageContainingCollectionSetsCollections() { 
 		$collection = new \Webfox\T3rating\Domain\Model\Collection();
-		$objectStorageHoldingExactlyOneCollection = new \TYPO3\CMS\Extbase\Persistence\Generic\ObjectStorage();
-		$objectStorageHoldingExactlyOneCollection->attach($collection);
-		$this->fixture->setCollection($objectStorageHoldingExactlyOneCollection);
+		$objectStorageHoldingExactlyOneCollections = new \TYPO3\CMS\Extbase\Persistence\Generic\ObjectStorage();
+		$objectStorageHoldingExactlyOneCollections->attach($collection);
+		$this->fixture->setCollections($objectStorageHoldingExactlyOneCollections);
 
 		$this->assertSame(
-			$objectStorageHoldingExactlyOneCollection,
-			$this->fixture->getCollection()
+			$objectStorageHoldingExactlyOneCollections,
+			$this->fixture->getCollections()
 		);
 	}
 	
 	/**
 	 * @test
 	 */
-	public function addCollectionToObjectStorageHoldingCollection() {
+	public function addCollectionToObjectStorageHoldingCollections() {
 		$collection = new \Webfox\T3rating\Domain\Model\Collection();
 		$objectStorageHoldingExactlyOneCollection = new \TYPO3\CMS\Extbase\Persistence\Generic\ObjectStorage();
 		$objectStorageHoldingExactlyOneCollection->attach($collection);
@@ -141,14 +141,14 @@ class ChoiceTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 
 		$this->assertEquals(
 			$objectStorageHoldingExactlyOneCollection,
-			$this->fixture->getCollection()
+			$this->fixture->getCollections()
 		);
 	}
 
 	/**
 	 * @test
 	 */
-	public function removeCollectionFromObjectStorageHoldingCollection() {
+	public function removeCollectionFromObjectStorageHoldingCollections() {
 		$collection = new \Webfox\T3rating\Domain\Model\Collection();
 		$localObjectStorage = new \TYPO3\CMS\Extbase\Persistence\Generic\ObjectStorage();
 		$localObjectStorage->attach($collection);
@@ -158,7 +158,7 @@ class ChoiceTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 
 		$this->assertEquals(
 			$localObjectStorage,
-			$this->fixture->getCollection()
+			$this->fixture->getCollections()
 		);
 	}
 	
