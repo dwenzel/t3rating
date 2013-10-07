@@ -41,10 +41,6 @@
 			<trans-unit id="tx_t3rating_domain_model_choice.hint">
 				<source>hint</source>
 			</trans-unit>
-			<trans-unit id="tx_t3rating_domain_model_choice.collections">
-				<source>Collection</source>
-			</trans-unit>
-			
 			<trans-unit id="tx_t3rating_domain_model_vote">
 				<source>Vote</source>
 			</trans-unit>

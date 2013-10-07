@@ -55,7 +55,6 @@ CREATE TABLE tx_t3rating_domain_model_choice (
 	title varchar(255) DEFAULT '' NOT NULL,
 	description text NOT NULL,
 	hint text NOT NULL,
-	collections int(11) unsigned DEFAULT '0' NOT NULL,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,
@@ -130,19 +129,6 @@ CREATE TABLE tx_t3rating_domain_model_vote (
 );
 
 #
-# Table structure for table 'sys_file_collection'
-#
-CREATE TABLE sys_file_collection (
-
-	choice int(11) unsigned DEFAULT '0' NOT NULL,
-
-	fe_user int(11) unsigned DEFAULT '0',
-
-	tx_extbase_type varchar(255) DEFAULT '' NOT NULL,
-
-);
-
-#
 # Table structure for table 'tx_t3rating_voting_choice_mm'
 #
 CREATE TABLE tx_t3rating_voting_choice_mm (
@@ -155,11 +141,3 @@ CREATE TABLE tx_t3rating_voting_choice_mm (
 	KEY uid_foreign (uid_foreign)
 );
 
-#
-# Table structure for table 'sys_file_collection'
-#
-CREATE TABLE sys_file_collection (
-
-	choice  int(11) unsigned DEFAULT '0' NOT NULL,
-
-);

@@ -77,6 +77,7 @@ $TCA['tx_t3rating_domain_model_choice'] = array(
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_t3rating_domain_model_vote', 'EXT:t3rating/Resources/Private/Language/locallang_csh_tx_t3rating_domain_model_vote.xlf');
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_t3rating_domain_model_vote');
+
 $TCA['tx_t3rating_domain_model_vote'] = array(
 	'ctrl' => array(
 		'title'	=> 'LLL:EXT:t3rating/Resources/Private/Language/locallang_db.xlf:tx_t3rating_domain_model_vote',
@@ -104,6 +105,7 @@ $TCA['tx_t3rating_domain_model_vote'] = array(
 	),
 );
 
+/*
 $tmp_t3rating_columns = array(
 
 	'fe_user' => array(
@@ -131,11 +133,12 @@ $TCA['sys_file_collection']['columns'][$TCA['sys_file_collection']['ctrl']['type
 $TCA['sys_file_collection']['types']['Tx_T3rating_Collection']['showitem'] = $TCA['sys_file_collection']['types']['1']['showitem'];
 $TCA['sys_file_collection']['types']['Tx_T3rating_Collection']['showitem'] .= ',--div--;LLL:EXT:t3rating/Resources/Private/Language/locallang_db.xlf:tx_t3rating_domain_model_collection,';
 $TCA['sys_file_collection']['types']['Tx_T3rating_Collection']['showitem'] .= 'fe_user';
-
+*/
 
 
 ## EXTENSION BUILDER DEFAULTS END TOKEN - Everything BEFORE this line is overwritten with the defaults of the extension builder
 // @FIXME dw 2013-09-20: generated config above fails  with DB type mismatch. 
-$TCA['sys_file_collection']['types']['static']['showitem'] .= ',--div--;LLL:EXT:t3rating/Resources/Private/Language/locallang_db.xlf:tx_t3rating_domain_model_collection,';
-$TCA['sys_file_collection']['types']['static']['showitem'] .= 'fe_user';
+//$TCA['sys_file_collection']['types']['static']['showitem'] .= ',--div--;LLL:EXT:t3rating/Resources/Private/Language/locallang_db.xlf:tx_t3rating_domain_model_collection,';
+//$TCA['sys_file_collection']['types']['static']['showitem'] .= 'fe_user';
 ?>
+

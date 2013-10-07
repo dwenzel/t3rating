@@ -41,10 +41,6 @@
 			<trans-unit id="tx_t3rating_domain_model_choice.hint">
 				<source>Hint</source>
 			</trans-unit>
-			<trans-unit id="tx_t3rating_domain_model_choice.collections">
-				<source>Collections</source>
-			</trans-unit>
-
 			<trans-unit id="tx_t3rating_domain_model_vote">
 				<source>Vote</source>
 			</trans-unit>
@@ -56,17 +52,6 @@
 			</trans-unit>
 			<trans-unit id="tx_t3rating_domain_model_vote.voting">
 				<source>Voting</source>
-			</trans-unit>
-
-			<trans-unit id="tx_t3rating_domain_model_collection">
-				<source>Collection</source>
-			</trans-unit>
-			<trans-unit id="tx_t3rating_domain_model_collection.fe_user">
-				<source>Fe User</source>
-			</trans-unit>
-			
-			<trans-unit id="sys_file_collection.tx_extbase_type.Tx_T3rating_Collection">
-				<source>Rating Collection</source>
 			</trans-unit>
 			
 		</body>

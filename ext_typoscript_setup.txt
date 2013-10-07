@@ -1,19 +1,6 @@
 config.tx_extbase{
     persistence{
         classes{
-
-            TYPO3\CMS\Core\Resource\Collection\StaticFileCollection {
-                subclasses {
-                    Tx_T3rating_Collection = Webfox\T3rating\Domain\Model\Collection
-					
-          		}
-            }
-            Webfox\T3rating\Domain\Model\Collection {
-                mapping {
-                    tableName = sys_file_collection
-                    recordType = Tx_T3rating_Collection
-                }
-            }
             
     	}
     }

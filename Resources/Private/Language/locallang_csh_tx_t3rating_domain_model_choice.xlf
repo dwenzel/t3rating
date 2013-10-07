@@ -13,9 +13,6 @@
 			<trans-unit id="hint.description">
 				<source>hint</source>
 			</trans-unit>
-			<trans-unit id="collections.description">
-				<source>Collection</source>
-			</trans-unit>
 		</body>
 	</file>
 </xliff>
