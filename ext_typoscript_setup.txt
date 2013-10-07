@@ -8,23 +8,10 @@ config.tx_extbase{
 					
           		}
             }
-            TYPO3\CMS\Extbase\Domain\Model\FrontendUser {
-                subclasses {
-                    Tx_T3rating_User = Webfox\T3rating\Domain\Model\User
-					
-          		}
-            }
             Webfox\T3rating\Domain\Model\Collection {
                 mapping {
                     tableName = sys_file_collection
                     recordType = Tx_T3rating_Collection
-                }
-            }
-            
-            Webfox\T3rating\Domain\Model\User {
-                mapping {
-                    tableName = fe_users
-                    recordType = Tx_T3rating_User
                 }
             }
             

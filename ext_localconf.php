@@ -29,6 +29,7 @@ if (!defined('TYPO3_MODE')) {
 		'Voting' => '',
 		'Choice' => '',
 		'Vote' => 'create',
+		'Collection' => '',
 		
 	)
 );
