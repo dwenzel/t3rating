@@ -34,6 +34,28 @@ namespace Webfox\T3rating\Domain\Repository;
  *
  */
 class VoteRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
+	
+	/**
+  	 * Find demanded
+  	 * @var \Webfox\T3rating\Domain\Model\VoteDemand $demand
+  	 * @return \TYPO3\CMS\Extbase\Persistence\Generic\QueryResult
+  	 */
+	public function findDemanded($demand) {
+		$query = $this->createQuery;
+		$constraints = array();
+		if ($demand->getUser()) {
+			$constraints[] = $query->equals('user', $demand->getUser());
+		}
+		if ($demand->getVoting()) {
+			$constraints[] = $query->equals('voting', $demand->getVoting());
+		}
+		if ($demand->getChoice()) {
+			$constraints[] = $query->equals('choice', $demand->getChoice());
+		}
+		
+		count($constraints)?$query->matching($query->logicalAnd($constraints)):NULL;
+		return query->execute();
+	}
 
 }
 ?>
