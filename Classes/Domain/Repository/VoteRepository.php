@@ -41,7 +41,7 @@ class VoteRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
   	 * @return \TYPO3\CMS\Extbase\Persistence\Generic\QueryResult
   	 */
 	public function findDemanded($demand) {
-		$query = $this->createQuery;
+		$query = $this->createQuery();
 		$constraints = array();
 		if ($demand->getUser()) {
 			$constraints[] = $query->equals('user', $demand->getUser());
@@ -54,7 +54,7 @@ class VoteRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 		}
 		
 		count($constraints)?$query->matching($query->logicalAnd($constraints)):NULL;
-		return query->execute();
+		return $query->execute();
 	}
 
 }
