@@ -58,12 +58,11 @@ class Choice extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $hint;
 
 	/**
-	 * Collection
+	 * Record
 	 *
-	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Webfox\T3rating\Domain\Model\Collection>
-	 * @lazy
+	 * @var \string 
 	 */
-	protected $collections;
+	protected $record;
 
 	/**
 	 * __construct
@@ -147,42 +146,23 @@ class Choice extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	}
 
 	/**
-	 * Adds a Collection
+	 * Returns the related record
 	 *
-	 * @param \Webfox\T3rating\Domain\Model\Collection $collection
-	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Webfox\T3rating\Domain\Model\Collection> collections
+	 * @return \string A string containing the database table and uid of the
+	 * record
 	 */
-	public function addCollection(\Webfox\T3rating\Domain\Model\Collection $collection) {
-		$this->collections->attach($collections);
+	public function getRecord() {
+		return $this->record;
 	}
 
 	/**
-	 * Removes a Collection
+	 * Sets the related record
 	 *
-	 * @param \Webfox\T3rating\Domain\Model\Collection $collectionToRemove The Collection to be removed
-	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Webfox\T3rating\Domain\Model\Collection> collections
+	 * @param \string $record
+	 * @return void
 	 */
-	public function removeCollection(\Webfox\T3rating\Domain\Model\Collection $collectionToRemove) {
-		$this->collections->detach($collectionToRemove);
-	}
-
-	/**
-	 * Returns the collections
-	 *
-	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Webfox\T3rating\Domain\Model\Collection> collections
-	 */
-	public function getCollections() {
-		return $this->collections;
-	}
-
-	/**
-	 * Sets the collections
-	 *
-	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Webfox\T3rating\Domain\Model\Collection> $collections
-	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Webfox\T3rating\Domain\Model\Collection> collections
-	 */
-	public function setCollections(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $collections) {
-		$this->collections = $collections;
+	public function setRecord($record) {
+		$this->record = $record;
 	}
 
 }

@@ -104,5 +104,22 @@ class ChoiceTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 		);
 	}
 	
+	/**
+	 * @test
+	 */
+	public function getRecordReturnsInitialValueForString() { }
+
+	/**
+	 * @test
+	 */
+	public function setRecordForStringSetsHint() { 
+		$this->fixture->setRecord('Conceived at T3CON10');
+
+		$this->assertSame(
+			'Conceived at T3CON10',
+			$this->fixture->getRecord()
+		);
+	}
+	
 }
 ?>
