@@ -33,7 +33,7 @@ namespace Webfox\T3rating\Domain\Model;
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
-class VoteDemand extends \TYPO3\CMS\Extbase\DomainObjec\AbstractEntity {
+class VoteDemand extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
  	* Choice
  	* @var \integer
