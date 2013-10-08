@@ -108,7 +108,8 @@ $TCA['tx_t3rating_domain_model_voting'] = array(
 			'config' => array(
 				'type' => 'select',
 				'items' => array(
-					array('-- Label --', 0),
+					array('Selection', 0),
+					array('Rating', 1),
 				),
 				'size' => 1,
 				'maxitems' => 1,
