@@ -33,7 +33,7 @@ namespace Webfox\T3rating\Controller;
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
-class VotingController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
+class VotingController extends AbstractController {
 
 	/**
 	 * votingRepository
@@ -42,6 +42,22 @@ class VotingController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
 	 * @inject
 	 */
 	protected $votingRepository;
+
+	/**
+	 * Choice Repository
+	 *
+	 * @var \Webfox\T3rating\Domain\Repository\ChoiceRepository
+	 * @inject
+	 */
+	protected $choiceRepository;
+
+	/**
+	 * Vote Repository
+	 *
+	 * @var \Webfox\T3rating\Domain\Repository\VoteRepository
+	 * @inject
+	 */
+	protected $voteRepository;
 
 	/**
 	 * action list
@@ -62,6 +78,22 @@ class VotingController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
 	public function showAction(\Webfox\T3rating\Domain\Model\Voting $voting) {
 		$this->view->assign('voting', $voting);
 	}
+
+	/**
+	 * action vote
+	 *
+	 * @param \Webfox\T3rating\Domain\Model\Voting $voting
+	 * @param \Webfox\T3rating\Domain\Model\Choice $choice
+	 * @return void
+	 */
+	public function voteAction(\Webfox\T3rating\Domain\Model\Voting $voting, \Webfox\T3rating\Domain\Model\Choice $choice) {
+ 		$vote = new \Webfox\T3rating\Domain\Model\Vote;
+		if($this->frontendUser) $vote->setUser($this->frontendUser->getUid());
+		$vote->setVoting($voting->getUid());
+		$vote->setChoice($choice->getUid());
+
+		$this->voteRepository->add($vote);
+		$this->persistenceManager->persistAll();
 
 }
 
