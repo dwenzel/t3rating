@@ -1,4 +1,6 @@
 <?php
+namespace Webfox\T3rating\ViewHelpers;
+
 /***************************************************************
 *  Copyright notice
 *
@@ -33,7 +35,7 @@
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  * @author      Dirk Wenzel <wenzel@webfox01.de>
  */
-class Tx_T3rating_ViewHelpers_ChoiceViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
+class ChoiceViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
 
 	/**
 	 * Voting repository
