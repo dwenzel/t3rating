@@ -102,35 +102,39 @@ class Tx_T3rating_ViewHelpers_If_CanUserVoteViewHelper extends \TYPO3\CMS\Fluid\
 	}
 
 	/**
-	 * is choice
+	 * can user vote
 	 * @return boolean
 	 */
 	protected function canUserVote() {
 		$choice = $this->arguments['choice'];
 		$voting = $this->votingRepository->findByUid($this->arguments['votingUid']);
+		/**
+ 		* @todo: we assume that votings are only allowed for authenticated
+ 		* users, this could be made configurable (global or per voting)
+ 		*/		
+		//echo('feUserId: ' . $this->frontendUser->getUid());
+		if (!$this->frontendUser) return FALSE;
+
+		// test for max votes per user  
 		$demand = new \Webfox\T3rating\Domain\Model\VoteDemand;
 		$demand->setUser($this->frontendUser->getUid());
 		$demand->setVoting($this->arguments['votingUid']);
+		$usersVotesCount = count($this->voteRepository->findDemanded($demand)->toArray());
+
+		if ($this->frontendUser AND $voting->getVotesCount() > 0) {
+			//echo('usersVotes: ' . $usersVotesCount . ' votes per User: '. $voting->getVotesCount());
+			if(($voting->getVotesCount - $usersVotesCount) <= 0) return  FALSE;
+		}		
+
+		// test if user already voted for this choice
 		$demand->setChoice($choice->getUid());
-		$votes = $this->voteRepository->findDemanded($demand);
-
-		var_dump('votes: ' . $votes->count());
-		var_dump(' votes per user: ' . $voting->getVotesCount());
-
-		if ($voting) {
-			if(is_object($this->arguments['object'])){
-				//@todo get class name and uid from object
-			} else {
-				$recordString = $this->arguments['tableName'] . '_' . $this->arguments['recordUid'];
-			}
-			$choices = $voting->getChoices();
-			foreach($choices as $choice) {
-				if ($choice->getRecord() == $recordString) {
-					return TRUE;
-				}
-			}
+		$usersVotesCount = count($this->voteRepository->findDemanded($demand)->toArray());
+		if ($this->frontendUser AND $usersVotesCount) {
+			// user already voted for this choice
+			return FALSE;
 		}
-		return FALSE;
+		
+		return TRUE;
 	}
 }
 
