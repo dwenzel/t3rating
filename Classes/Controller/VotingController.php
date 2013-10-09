@@ -86,15 +86,16 @@ class VotingController extends AbstractController {
 	 * @param \Webfox\T3rating\Domain\Model\Choice $choice
 	 * @return void
 	 */
-	public function voteAction(\Webfox\T3rating\Domain\Model\Voting $voting, \Webfox\T3rating\Domain\Model\Choice $choice) {
+	public function voteAction(\Webfox\T3rating\Domain\Model\Voting $voting = NULL, \Webfox\T3rating\Domain\Model\Choice $choice = NULL) {
  		$vote = new \Webfox\T3rating\Domain\Model\Vote;
-		if($this->frontendUser) $vote->setUser($this->frontendUser->getUid());
-		$vote->setVoting($voting->getUid());
-		$vote->setChoice($choice->getUid());
-
-		$this->voteRepository->add($vote);
-		$this->persistenceManager->persistAll();
-
+		if ($this->frontendUser) $vote->setUser($this->frontendUser);
+		if ($voting AND $choice) {
+		    $vote->setVoting($voting);
+		    $vote->setChoice($choice);
+		    $this->voteRepository->add($vote);
+		    $this->persistenceManager->persistAll();
+		}
+	}
 }
 
 ?>
