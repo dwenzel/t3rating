@@ -12,11 +12,24 @@ if (!defined('TYPO3_MODE')) {
 	),
 	// non-cacheable actions
 	array(
-		'Vote' => 'create',
+	//	'Vote' => 'create',
 		
 	)
 );
 
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+	'Webfox.' . $_EXTKEY,
+	'Voting',
+	array(
+		'Voting' => 'vote',
+		
+	),
+	// non-cacheable actions
+	array(
+		'Voting' => 'vote',
+		
+	)
+);
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
 	'Webfox.' . $_EXTKEY,
 	'Choice',
