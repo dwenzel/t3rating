@@ -1,5 +1,6 @@
 <?php
-#namespace Webfox\T3rating\ViewHelpers;
+namespace Webfox\T3rating\ViewHelpers;
+
 /***************************************************************
 *  Copyright notice
 *
@@ -34,7 +35,7 @@
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  * @author      Dirk Wenzel <wenzel@webfox01.de>
  */
-class Tx_T3rating_ViewHelpers_If_IsChoiceViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractConditionViewHelper {
+class VotingViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
 
 	/**
 	 * Voting repository
@@ -49,49 +50,18 @@ class Tx_T3rating_ViewHelpers_If_IsChoiceViewHelper extends \TYPO3\CMS\Fluid\Cor
 	 */
 	public function initializeArguments() {
 		parent::initializeArguments();
-		$this->registerArgument('tableName', 'string', 'lower case name of the table in database');
-		$this->registerArgument('recordUid', 'integer', 'Uid of the record');
-		$this->registerArgument('votingUid', 'integer', 'Uid of the voting',
-						TRUE);
-		$this->registerArgument('object', 'object', 'An extbase object. If this
-						argument is given tableName and recordUid are not
-						evaluated anymore ');
+		$this->registerArgument('uid', 'integer', 'Uid of the voting record');
 	}
 
 	/**
-	 * Tells whether a given record or object is a choice of given voting.
+	 * Returns a voting.
 	 *
+	 * @return \Webfox\T3rating\Domain\Model\Voting
 	 */
-	public function render() {
-		if($this->isChoice()) {
-			return $this->renderThenChild();
-		} else {
-			return $this->renderElseChild();
-		}
+	public function render() { 
+	    return $this->votingRepository->findByUid($this->arguments['uid']);
 	}
 
-	/**
-	 * is choice
-	 * @return boolean
-	 */
-	protected function isChoice() {
-		$voting = $this->votingRepository->findByUid($this->arguments['votingUid']);
-		$recordString = $this->arguments['tableName'] . '_' . $this->arguments['recordUid'];
-		if ($voting) {
-			if(is_object($this->arguments['object'])){
-				//@todo get class name and uid from object
-			} else {
-				$recordString = $this->arguments['tableName'] . '_' . $this->arguments['recordUid'];
-			}
-			$choices = $voting->getChoices();
-			foreach($choices as $choice) {
-				if ($choice->getRecord() == $recordString) {
-					return TRUE;
-				}
-			}
-		}
-		return FALSE;
-	}
 }
 
 ?>
