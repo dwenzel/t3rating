@@ -114,7 +114,7 @@ class IfCanUserVoteViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractC
  		* users, this could be made configurable (global or per voting)
  		*/		
 		//echo('feUserId: ' . $this->frontendUser->getUid());
-		if (!$this->frontendUser) return FALSE;
+		if (!$this->frontendUser OR !$choice OR !$voting) return FALSE;
 
 		// test for max votes per user  
 		$demand = new \Webfox\T3rating\Domain\Model\VoteDemand;
