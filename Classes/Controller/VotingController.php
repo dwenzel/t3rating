@@ -60,6 +60,23 @@ class VotingController extends AbstractController {
 	protected $voteRepository;
 
 	/**
+	 * Redirect Configuration
+	 * @var \array 
+	 */
+	protected $redirectConfiguration;
+
+	/**
+	 * Initialize Action
+	 */
+	public function initializeAction() {
+			parent::initializeAction();
+		$requestArguments = $this->request->getArguments();
+		if(key_exists('redirectConfiguration', $requestArguments)) {
+			$this->redirectConfiguration = $requestArguments['redirectConfiguration'];
+		}
+	}
+
+	/**
 	 * action list
 	 *
 	 * @return void
@@ -94,6 +111,14 @@ class VotingController extends AbstractController {
 		    $vote->setChoice($choice);
 		    $this->voteRepository->add($vote);
 		    $this->persistenceManager->persistAll();
+			if($this->redirectConfiguration) {
+				$this->redirect(
+						$this->redirectConfiguration['action'],
+						$this->redirectConfiguration['controllerName'],
+						$this->redirectConfiguration['extensionName'],
+						$this->redirectConfiguration['arguments']
+								);
+			}
 		}
 	}
 }
