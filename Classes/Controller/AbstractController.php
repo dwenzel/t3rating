@@ -1,5 +1,6 @@
 <?php
 namespace Webfox\T3rating\Controller;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /***************************************************************
  *  Copyright notice
@@ -57,6 +58,12 @@ class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 	protected $persistenceManager;
 
 	/**
+	 *
+	 * @var \string
+	 */
+	protected $visitorHash;
+
+	/**
 	 * Initialize Action
 	 */
 	public function initializeAction() {
@@ -66,6 +73,8 @@ class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 		    $this->frontendUser = $this->frontendUserRepository->findByUid($user['uid']);
 	    }
 	    $this->persistenceManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Persistence\\Generic\\PersistenceManager');
+
+		$this->visitorHash = hash('md5', GeneralUtility::getIndpEnv('REMOTE_ADDR') . GeneralUtility::getIndpEnv('HTTP_USER_AGENT'));
 	}
 
 }

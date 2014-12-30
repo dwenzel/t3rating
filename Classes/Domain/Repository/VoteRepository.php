@@ -52,6 +52,9 @@ class VoteRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 		if ($demand->getChoice()) {
 			$constraints[] = $query->equals('choice', $demand->getChoice());
 		}
+		if($demand->getVisitorHash()) {
+			$constraints[] = $query->equals('visitor_hash', $demand->getVisitorHash());
+		}
 		
 		count($constraints)?$query->matching($query->logicalAnd($constraints)):NULL;
 		return $query->execute();

@@ -6,10 +6,10 @@ if (!defined ('TYPO3_MODE')) {
 $TCA['tx_t3rating_domain_model_vote'] = array(
 	'ctrl' => $TCA['tx_t3rating_domain_model_vote']['ctrl'],
 	'interface' => array(
-		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, choice, user, voting',
+		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, choice, user, voting, visitor_hash',
 	),
 	'types' => array(
-		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, choice, user, voting,--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'),
+		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, choice, user, voting, visitor_hash,--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'),
 	),
 	'palettes' => array(
 		'1' => array('showitem' => ''),
@@ -111,6 +111,13 @@ $TCA['tx_t3rating_domain_model_vote'] = array(
 				'foreign_table' => 'fe_users',
 				'minitems' => 0,
 				'maxitems' => 1,
+			),
+		),
+		'visitor_hash' => array(
+			'label' => 'LLL:EXT:t3rating/Resources/Private/Language/locallang_db.xlf:tx_t3rating_domain_model_vote.visitorHash',
+			'config' => array(
+				'type' => 'input',
+				'readOnly' => TRUE,
 			),
 		),
 		'voting' => array(

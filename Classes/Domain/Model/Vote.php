@@ -59,6 +59,13 @@ class Vote extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $voting;
 
 	/**
+	 * Visitor hash
+	 *
+	 * @var \string
+	 */
+	protected $visitorHash;
+
+	/**
 	 * Returns the user
 	 *
 	 * @return \TYPO3\CMS\Extbase\Domain\Model\FrontendUser $user
@@ -115,5 +122,22 @@ class Vote extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 		$this->choice = $choice;
 	}
 
+	/**
+	 * Gets the visitor hash
+	 *
+	 * @return string
+	 */
+	public function getVisitorHash() {
+		return $this->visitorHash;
+	}
+
+	/**
+	 * Sets the visitor hash
+	 *
+	 * @param \string $hash
+	 */
+	public function setVisitorHash($hash) {
+		$this->visitorHash = $hash;
+	}
 }
 ?>

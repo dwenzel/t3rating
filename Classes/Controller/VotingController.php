@@ -25,6 +25,7 @@ namespace Webfox\T3rating\Controller;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  *
@@ -104,9 +105,11 @@ class VotingController extends AbstractController {
 	 * @return void
 	 */
 	public function voteAction(\Webfox\T3rating\Domain\Model\Voting $voting = NULL, \Webfox\T3rating\Domain\Model\Choice $choice = NULL) {
- 		$vote = new \Webfox\T3rating\Domain\Model\Vote;
-		if ($this->frontendUser) $vote->setUser($this->frontendUser);
 		if ($voting AND $choice) {
+			/** @var \Webfox\T3rating\Domain\Model\Vote $vote */
+			$vote = GeneralUtility::makeInstance('Webfox\\T3rating\\Domain\\Model\\Vote');
+			if ($this->frontendUser) $vote->setUser($this->frontendUser);
+			$vote->setVisitorHash($this->visitorHash);
 		    $vote->setVoting($voting);
 		    $vote->setChoice($choice);
 		    $this->voteRepository->add($vote);

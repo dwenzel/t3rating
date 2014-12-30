@@ -9,6 +9,7 @@ CREATE TABLE tx_t3rating_domain_model_voting (
 	title varchar(255) DEFAULT '' NOT NULL,
 	type int(11) DEFAULT '0' NOT NULL,
 	votes_count int(11) DEFAULT '0' NOT NULL,
+	requires_frontend_user tinyint(4) unsigned DEFAULT '1' NOT NULL,
 	description text NOT NULL,
 	teaser text NOT NULL,
 	image text NOT NULL,
@@ -97,6 +98,7 @@ CREATE TABLE tx_t3rating_domain_model_vote (
 
 	choice int(11) unsigned DEFAULT '0',
 	user int(11) unsigned DEFAULT '0',
+	visitor_hash VARCHAR (32) DEFAULT '' NOT NULL,
 	voting int(11) unsigned DEFAULT '0',
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
