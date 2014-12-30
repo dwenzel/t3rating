@@ -1,6 +1,6 @@
 <?php
 namespace Webfox\T3rating\ViewHelpers;
-
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 /***************************************************************
 *  Copyright notice
 *
@@ -107,35 +107,42 @@ class IfCanUserVoteViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractC
 	 * @return boolean
 	 */
 	protected function canUserVote() {
+		$userCanVote = FALSE;
 		$choice = $this->arguments['choice'];
+		/** @var \Webfox\T3rating\Domain\Model\Voting $voting */
 		$voting = $this->votingRepository->findByUid($this->arguments['votingUid']);
-		/**
- 		* @todo: we assume that votings are only allowed for authenticated
- 		* users, this could be made configurable (global or per voting)
- 		*/		
-		//echo('feUserId: ' . $this->frontendUser->getUid());
-		if (!$this->frontendUser OR !$choice OR !$voting) return FALSE;
 
-		// test for max votes per user  
-		$demand = new \Webfox\T3rating\Domain\Model\VoteDemand;
-		$demand->setUser($this->frontendUser->getUid());
-		$demand->setVoting($this->arguments['votingUid']);
-		$usersVotesCount = count($this->voteRepository->findDemanded($demand)->toArray());
+		/** @var \Webfox\T3rating\Domain\Model\VoteDemand $totalVotesDemand */
+		$totalVotesDemand = GeneralUtility::makeInstance('Webfox\\T3rating\\Domain\\Model\\VoteDemand');
+		if($voting AND $choice){
+			$maxVotes = $voting->getVotesCount();
+			$totalVotesDemand->setVoting($this->arguments['votingUid']);
 
-		if ($this->frontendUser AND $voting->getVotesCount() > 0) {
-			//echo('usersVotes: ' . $usersVotesCount . ' votes per User: '. $voting->getVotesCount());
-			if(($voting->getVotesCount - $usersVotesCount) <= 0) return  FALSE;
-		}		
+			if($voting->requiresFrontendUser()) {
+				if($this->frontendUser) {
+					//find votes of current frontend user
+					$totalVotesDemand->setUser($this->frontendUser->getUid());
+				}
+			} else {
+				// find votes of anonymous user by matching its IP address and user agent
+				$totalVotesDemand->setVisitorHash(hash('md5', GeneralUtility::getIndpEnv('REMOTE_ADDR') . GeneralUtility::getIndpEnv('HTTP_USER_AGENT')));
+			}
 
-		// test if user already voted for this choice
-		$demand->setChoice($choice->getUid());
-		$usersVotesCount = count($this->voteRepository->findDemanded($demand)->toArray());
-		if ($this->frontendUser AND $usersVotesCount) {
-			// user already voted for this choice
-			return FALSE;
+			/** @var \Webfox\T3rating\Domain\Model\VoteDemand $votesForChoiceDemand */
+			$votesForChoiceDemand = clone($totalVotesDemand);
+			$votesForChoiceDemand->setChoice($choice->getUid());
+
+			$usersVotesTotal = count($this->voteRepository->findDemanded($totalVotesDemand)->toArray());
+			$usersVotesForChoice = count($this->voteRepository->findDemanded($votesForChoiceDemand)->toArray());
+
+			if(empty($usersVotesForChoice)) {
+				// user may vote an unlimited number of times but only once per choice
+				if(empty($maxVotes) OR (!empty($maxVotes) AND $usersVotesTotal < $maxVotes)){
+					$userCanVote = TRUE;
+				}
+			}
 		}
-		
-		return TRUE;
+		return $userCanVote;
 	}
 }
 
