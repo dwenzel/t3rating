@@ -3,6 +3,7 @@ if (!defined('TYPO3_MODE')) {
 	die ('Access denied.');
 }
 
+
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
 	'Webfox.' . $_EXTKEY,
 	'Voting',
@@ -22,14 +23,13 @@ if (!defined('TYPO3_MODE')) {
 	'Voting',
 	array(
 		'Voting' => 'vote',
-		
 	),
 	// non-cacheable actions
 	array(
 		'Voting' => 'vote',
-		
 	)
 );
+/*
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
 	'Webfox.' . $_EXTKEY,
 	'Choice',
@@ -44,5 +44,5 @@ if (!defined('TYPO3_MODE')) {
 		'Vote' => 'create',
 	)
 );
-
-?>
+*/
+$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['extbase']['commandControllers'][] = 'Webfox\\T3rating\\Command\\ChoiceCommandController';
