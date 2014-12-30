@@ -1,5 +1,6 @@
 <?php
 namespace Webfox\T3rating\ViewHelpers\User;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /***************************************************************
 *  Copyright notice
@@ -66,7 +67,7 @@ class VotesViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelpe
 	    parent::initialize();
 	    $user = $GLOBALS['TSFE']->fe_user->user;
 	    if ($user) {
-		$this->frontendUser = $this->frontendUserRepository->findByUid($user['uid']);
+			$this->frontendUser = $this->frontendUserRepository->findByUid($user['uid']);
 	    }
 	}
 
@@ -85,18 +86,23 @@ class VotesViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelpe
 	 * @return \TYPO3\CMS\Extbase\Persistence\Generic\QueryResult
 	 */
 	public function render() {
-	    if(!$this->frontendUser) return;
+		/** @var \Webfox\T3rating\Domain\Model\Voting $voting */
+		$voting = $this->arguments['voting'];
 
+		/** @var \Webfox\T3rating\Domain\Model\Choice $choice */
 	    $choice = $this->arguments['choice'];
-	    $voting = $this->arguments['voting'];
-	    $voteDemand = new \Webfox\T3rating\Domain\Model\VoteDemand;
-	    $voteDemand->setUser($this->frontendUser->getUid());
-	    if($choice) {
-		$voteDemand->setChoice($choice->getUid());
-	    }
+
+		$voteDemand = GeneralUtility::makeInstance('Webfox\\T3rating\\Domain\\Model\\VoteDemand');
+
 	    if($voting) {
-		$voteDemand->setVoting($voting->getUid());
+			$voteDemand->setVoting($voting->getUid());
+			if($voting->requiresFrontendUser() AND $this->frontendUser) {
+				$voteDemand->setUser($this->frontendUser->getUid());
+			}
 	    }
+		if($choice) {
+			$voteDemand->setChoice($choice->getUid());
+		}
 	    $votes = $this->voteRepository->findDemanded($voteDemand);
 	    return $votes;
 	}
