@@ -28,7 +28,7 @@ Create and manage different votings. Use arbitrary content as voting option.',
 	'modify_tables' => '',
 	'clearCacheOnLoad' => 0,
 	'lockType' => '',
-	'version' => '0.2.0',
+	'version' => '0.3.0-dev',
 	'constraints' => array(
 		'depends' => array(
 			'extbase' => '6.0',
