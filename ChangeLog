@@ -1,0 +1,10 @@
+2015-01-08         [RELEASE] Release of t3rating 0.3.0 (Dirk Wenzel)
+2015-01-05 5d4098c [TASK] version number raised to 0.3.0-dev (Dirk Wenzel)
+2014-12-30 c9e9f48 [TASK] User/VotesViewHelper refactored. (Dirk Wenzel)
+2014-12-30 9e17df3 [TASK] countVotes ViewHelper implemented (Dirk Wenzel)
+2014-12-30 7d6d9fc [TASK] ifCanUserVoteViewHelper refactored. The amount of votes (for a specific choice) is now determined by matching the users IP address and user agent against the visitorHash property of existing votes.  If a voting requires a logged in frontend user also the frontendUser property of votes will be respected. (Dirk Wenzel)
+2014-12-30 519ba84 [TASK] ChoiceCommandController implemented. This controller can be used as scheduler task (both in backend and cli). It adds objects of a given class as choices to a voting. (Dirk Wenzel)
+2014-12-30 6e50553 [TASK] models Voting and Vote extended: a logged in fronted user is now optional for voting. Anonymous users can be recognized by comparing their IP address and user agent. In order to avoid saving IP addresses a hash of both values is saved for each vote. (Dirk Wenzel)
+2014-12-30 f04553d [TASK] code cleanup (Dirk Wenzel)
+
+
