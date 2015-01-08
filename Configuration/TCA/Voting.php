@@ -6,10 +6,10 @@ if (!defined ('TYPO3_MODE')) {
 $TCA['tx_t3rating_domain_model_voting'] = array(
 	'ctrl' => $TCA['tx_t3rating_domain_model_voting']['ctrl'],
 	'interface' => array(
-		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, type, votes_count, description, teaser, image, choices',
+		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, type, votes_count, requires_frontend_user, description, teaser, image, choices',
 	),
 	'types' => array(
-		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, title, type, votes_count, description, teaser, image, choices,--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'),
+		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, title, type, requires_frontend_user, votes_count, description, teaser, image, choices,--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'),
 	),
 	'palettes' => array(
 		'1' => array('showitem' => ''),
@@ -114,6 +114,14 @@ $TCA['tx_t3rating_domain_model_voting'] = array(
 				'size' => 1,
 				'maxitems' => 1,
 				'eval' => 'required'
+			),
+		),
+		'requires_frontend_user' => array(
+			'exclude' => 1,
+			'label' => 'LLL:EXT:t3rating/Resources/Private/Language/locallang_db.xlf:tx_t3rating_domain_model_voting.requiresFrontendUser',
+			'config' => array(
+				'type' => 'check',
+				'default' => TRUE,
 			),
 		),
 		'votes_count' => array(

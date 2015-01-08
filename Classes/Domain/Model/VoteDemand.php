@@ -47,6 +47,11 @@ class VoteDemand extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $user;
 
 	/**
+	 * @var \string
+	 */
+	protected $visitorHash;
+
+	/**
 	* Voting
 	* @var \integer
 	*/
@@ -85,6 +90,25 @@ class VoteDemand extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	public function getUser() {
 		return $this->user;
 	}
+
+	/**
+	 * Gets the visitor hash
+	 *
+	 * @return string
+	 */
+	public function getVisitorHash(){
+		return $this->visitorHash;
+	}
+
+	/**
+	 * Sets the visitor hash
+	 *
+	 * @param \string
+	 */
+	public function setVisitorHash($hash) {
+		$this->visitorHash = $hash;
+	}
+
 
 	/**
  	* sets the votin

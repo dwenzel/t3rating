@@ -52,6 +52,13 @@ class Voting extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $type;
 
 	/**
+	 * Requires frontend user
+	 *
+	 * @var \boolean
+	 */
+	protected $requiresFrontendUser = TRUE;
+
+	/**
 	 * Votes per User Count
 	 *
 	 * @var \integer
@@ -264,5 +271,26 @@ class Voting extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 		$this->choices = $choices;
 	}
 
+	/**
+	 * Get requires frontend user
+	 * If true only logged in frontend users are allowed to vote
+	 *
+	 * @return bool
+	 */
+	public function getRequiresFrontendUser() {
+		return $this->requiresFrontendUser;
+	}
+
+	public function requiresFrontendUser() {
+		return $this->requiresFrontendUser;
+	}
+	/**
+	 * Sets requires frontend user
+	 *
+	 * @param \boolean $requiresFrontendUser
+	 */
+	public function setRequiresFrontendUser($requiresFrontendUser) {
+		$this->requiresFrontendUser = $requiresFrontendUser;
+	}
 }
 ?>

@@ -1,59 +1,64 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2013-09-20T21:40:06Z" product-name="t3rating">
-		<header/>
+	<file source-language="en" datatype="plaintext" original="messages" date="2014-12-29T16:42:59Z">
+		<header>
+			<generator>LFEditor</generator>
+		</header>
 		<body>
-
-			<trans-unit id="tx_t3rating_domain_model_voting">
-				<source>Voting</source>
-			</trans-unit>
-			<trans-unit id="tx_t3rating_domain_model_voting.title">
-				<source>Title</source>
-			</trans-unit>
-			<trans-unit id="tx_t3rating_domain_model_voting.type">
-				<source>Type</source>
-			</trans-unit>
-			<trans-unit id="tx_t3rating_domain_model_voting.votes_count">
-				<source>Votes Count</source>
-			</trans-unit>
-			<trans-unit id="tx_t3rating_domain_model_voting.description">
-				<source>Description</source>
-			</trans-unit>
-			<trans-unit id="tx_t3rating_domain_model_voting.teaser">
-				<source>Teaser</source>
-			</trans-unit>
-			<trans-unit id="tx_t3rating_domain_model_voting.image">
-				<source>Image</source>
-			</trans-unit>
-			<trans-unit id="tx_t3rating_domain_model_voting.choices">
-				<source>Choices</source>
-			</trans-unit>
-
-			<trans-unit id="tx_t3rating_domain_model_choice">
-				<source>Choice</source>
-			</trans-unit>
-			<trans-unit id="tx_t3rating_domain_model_choice.title">
-				<source>Title</source>
-			</trans-unit>
-			<trans-unit id="tx_t3rating_domain_model_choice.description">
-				<source>Description</source>
-			</trans-unit>
-			<trans-unit id="tx_t3rating_domain_model_choice.hint">
-				<source>Hint</source>
-			</trans-unit>
-			<trans-unit id="tx_t3rating_domain_model_vote">
-				<source>Vote</source>
-			</trans-unit>
-			<trans-unit id="tx_t3rating_domain_model_vote.choice">
-				<source>Choice</source>
-			</trans-unit>
-			<trans-unit id="tx_t3rating_domain_model_vote.user">
-				<source>User</source>
-			</trans-unit>
-			<trans-unit id="tx_t3rating_domain_model_vote.voting">
-				<source>Voting</source>
-			</trans-unit>
-			
+		<trans-unit id="tx_t3rating_domain_model_choice" xml:space="preserve">
+			<source>Choice</source>
+		</trans-unit>
+		<trans-unit id="tx_t3rating_domain_model_choice.description" xml:space="preserve">
+			<source>Description</source>
+		</trans-unit>
+		<trans-unit id="tx_t3rating_domain_model_choice.hint" xml:space="preserve">
+			<source>Hint</source>
+		</trans-unit>
+		<trans-unit id="tx_t3rating_domain_model_choice.title" xml:space="preserve">
+			<source>Title</source>
+		</trans-unit>
+		<trans-unit id="tx_t3rating_domain_model_vote" xml:space="preserve">
+			<source>Vote</source>
+		</trans-unit>
+		<trans-unit id="tx_t3rating_domain_model_vote.choice" xml:space="preserve">
+			<source>Choice</source>
+		</trans-unit>
+		<trans-unit id="tx_t3rating_domain_model_vote.user" xml:space="preserve">
+			<source>User</source>
+		</trans-unit>
+		<trans-unit id="tx_t3rating_domain_model_vote.visitorHash" xml:space="preserve">
+			<source>Visitor Hash</source>
+		</trans-unit>
+		<trans-unit id="tx_t3rating_domain_model_vote.voting" xml:space="preserve">
+			<source>Voting</source>
+		</trans-unit>
+		<trans-unit id="tx_t3rating_domain_model_voting" xml:space="preserve">
+			<source>Voting</source>
+		</trans-unit>
+		<trans-unit id="tx_t3rating_domain_model_voting.choices" xml:space="preserve">
+			<source>Choices</source>
+		</trans-unit>
+		<trans-unit id="tx_t3rating_domain_model_voting.description" xml:space="preserve">
+			<source>Description</source>
+		</trans-unit>
+		<trans-unit id="tx_t3rating_domain_model_voting.image" xml:space="preserve">
+			<source>Image</source>
+		</trans-unit>
+		<trans-unit id="tx_t3rating_domain_model_voting.requiresFrontendUser" xml:space="preserve">
+			<source>Frontend Users only</source>
+		</trans-unit>
+		<trans-unit id="tx_t3rating_domain_model_voting.teaser" xml:space="preserve">
+			<source>Teaser</source>
+		</trans-unit>
+		<trans-unit id="tx_t3rating_domain_model_voting.title" xml:space="preserve">
+			<source>Title</source>
+		</trans-unit>
+		<trans-unit id="tx_t3rating_domain_model_voting.type" xml:space="preserve">
+			<source>Type</source>
+		</trans-unit>
+		<trans-unit id="tx_t3rating_domain_model_voting.votes_count" xml:space="preserve">
+			<source>Votes Count</source>
+		</trans-unit>
 		</body>
 	</file>
 </xliff>
