@@ -70,10 +70,20 @@ class VotingController extends AbstractController {
 	 * Initialize Action
 	 */
 	public function initializeAction() {
-			parent::initializeAction();
+		parent::initializeAction();
+
 		$requestArguments = $this->request->getArguments();
-		if(key_exists('redirectConfiguration', $requestArguments)) {
-			$this->redirectConfiguration = $requestArguments['redirectConfiguration'];
+		if($this->request->hasArgument('redirectConfiguration')){
+			$redirectConfiguration = $requestArguments['redirectConfiguration'];
+			if(isset($redirectConfiguration['addArguments'])){
+				$addArguments = explode(',', $redirectConfiguration['addArguments']);
+				foreach($addArguments as $addArgument) {
+					if($value = GeneralUtility::_GP($addArgument)){
+						$redirectConfiguration['arguments'] = $value;
+					}
+				}
+			}
+			$this->redirectConfiguration = $redirectConfiguration;
 		}
 	}
 
@@ -116,11 +126,12 @@ class VotingController extends AbstractController {
 		    $this->persistenceManager->persistAll();
 			if($this->redirectConfiguration) {
 				$this->redirect(
-						$this->redirectConfiguration['action'],
-						$this->redirectConfiguration['controllerName'],
-						$this->redirectConfiguration['extensionName'],
-						$this->redirectConfiguration['arguments']
-								);
+					$this->redirectConfiguration['action'],
+					$this->redirectConfiguration['controllerName'],
+					$this->redirectConfiguration['extensionName'],
+					$this->redirectConfiguration['arguments'],
+					$this->redirectConfiguration['pageUid']
+				);
 			}
 		}
 	}
