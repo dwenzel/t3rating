@@ -1,3 +1,7 @@
+2015-01-13         [RELEASE] Release of t3rating 0.4.0 (Dirk Wenzel)
+2015-01-09 18e003b [TASK] disallow voting if frontend user required but not found (Dirk Wenzel)
+2015-01-09 3cf03c5 [TASK] process redirect configuration after voting (Dirk Wenzel)
+
 2015-01-08         [RELEASE] Release of t3rating 0.3.0 (Dirk Wenzel)
 2015-01-05 5d4098c [TASK] version number raised to 0.3.0-dev (Dirk Wenzel)
 2014-12-30 c9e9f48 [TASK] User/VotesViewHelper refactored. (Dirk Wenzel)
@@ -6,5 +10,3 @@
 2014-12-30 519ba84 [TASK] ChoiceCommandController implemented. This controller can be used as scheduler task (both in backend and cli). It adds objects of a given class as choices to a voting. (Dirk Wenzel)
 2014-12-30 6e50553 [TASK] models Voting and Vote extended: a logged in fronted user is now optional for voting. Anonymous users can be recognized by comparing their IP address and user agent. In order to avoid saving IP addresses a hash of both values is saved for each vote. (Dirk Wenzel)
 2014-12-30 f04553d [TASK] code cleanup (Dirk Wenzel)
-
-
