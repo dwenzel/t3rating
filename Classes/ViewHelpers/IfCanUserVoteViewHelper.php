@@ -1,6 +1,8 @@
 <?php
 namespace Webfox\T3rating\ViewHelpers;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
+
 /***************************************************************
 *  Copyright notice
 *
@@ -122,6 +124,9 @@ class IfCanUserVoteViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractC
 				if($this->frontendUser) {
 					//find votes of current frontend user
 					$totalVotesDemand->setUser($this->frontendUser->getUid());
+				} else {
+					// frontend user required but not found
+					return FALSE;
 				}
 			} else {
 				// find votes of anonymous user by matching its IP address and user agent
